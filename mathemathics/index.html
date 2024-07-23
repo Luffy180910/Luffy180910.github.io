@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>数论</title>
+    <link rel="shortcut icon" href="../favicon.ico" />        
+    <style  type="text/css">
+        * {padding: 0; margin: 0;}
+        a{text-decoration: none;}
+        /*
+        body{
+            background-image:url(../genshin/水神.png);
+            background-position: right center ;
+            background-attachment: fixed;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: auto;
+            height: 1440px;}
+        */
+            .wrap {
+            background: rgba(149, 149, 149, 0.4); width: 600px; height: auto;
+            text-align:start; padding: 40px 40px 40px; margin: 45px auto 0; overflow: hidden;}
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        
+            <b></b>
+            <p>费马小定理(Fermat's little theorem)是数论中的一个定理。</p>
+            <p>假如 a 是一个整数, p 是一个质数，那么 a<sup>p</sup> - a 是 p 的倍数，可以表示为</p>
+            <pre>a<sup>p</sup> ≡ a ( mod p )</pre>    
+    </div>
+
+    <div class="wrap">
+            <b></b>
+            <p>欧拉函数(Euler's function)是数论中的一个函数。</p>
+            <p>欧拉函数φ(n)表示小于或等于n的正整数中与n互质的数的个数。</p>
+            <p>φ(n)的定义为</p>
+            <pre>φ(n) = count of integers k such that 1 ≤ k ≤ n and gcd(k, n) = 1</pre>
+            <p>欧拉函数φ(n)的性质：</p>
+            <ul>
+                <li>φ(1) = 1</li>
+                <li>如果n是质数,φ(n) = n-1</li>
+                <li>如果n是合数,且φ(d) = d-1,则φ(n) = φ(d) * φ(n/d)</li>
+            </ul>
+    </div>
+
+
+    <div class="wrap">
+            <b></b>
+            <p>欧拉定理(Euler's theorem)是数论中的一个定理。</p>
+            <p>如果p是质数，a是任意整数，那么a<sup>φ(p)</sup> ≡ 1 (mod p)。</p>
+    </div>
+
+
+    <div class="wrap">
+            <b></b> 
+            <p>RSA加密算法原理</p>
+            <p>RSA加密算法是一种公钥加密算法,它可以实现信息的安全传输。</p>
+
+            <br>
+            <p>其基本原理是利用两个大的质数p和q,计算出它们的乘积n,并计算出它们的欧拉函数φ(n)</p>
+            <p>首先,选取两个大质数p和q,并计算它们的乘积n</p>
+            <p>然后,计算φ(n)=(p-1)(q-1)</p>
+            <p>接着,选取一个整数e,使得1 ≤ e ≤ φ(n),且gcd(e, φ(n)) = 1</p>
+            <p>最后,计算出整数d,使得de ≡ 1 (mod φ(n))</p>
+            <p>公钥为(n, e)，私钥为(n, d)</p>
+            
+            <br>
+            <p>加密过程：</p>
+            <p>将明文信息m转换为0到n-1之间的整数c。</p>
+            <p>计算出密文信息 c = m<sup>e</sup> mod n</p>
+
+            <br>
+            <p>解密过程：</p>
+            <p>将密文信息c转换为明文信息 m = c<sup>d</sup> mod n</p>
+
+            <br>
+            <p>原理 m<sup>e*d</sup> mod n =m<sup>k*φ(n)+1</sup> mod n </p>
+            <p>而根据欧拉定理,m<sup>φ(p)</sup> ≡ 1 (mod p),即m<sup>k*φ(n)+1</sup> mod n ≡ m mod n</p>
+            
+            <p>RSA加密算法的安全性依赖于两个大质数p和q的选择,以及选取的e值。</p>
+    </div>
+</body>

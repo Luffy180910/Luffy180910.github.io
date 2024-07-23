@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8">
+    <title>boids model</title>
+    <link rel="shortcut icon" href="../favicon.ico" />        
+    <style  type="text/css">
+        * {padding: 0; margin: 0;}
+        a{text-decoration: none;}
+        /*
+        body{
+            background-image:url(../genshin/水神.png);
+            background-position: right center ;
+            background-attachment: fixed;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: auto;
+            height: 1440px;}
+        */
+            .wrap {
+            background: rgba(149, 149, 149, 0.4); width: 600px; height: 1000px;
+            text-align:start; padding: 80px 40px 10px; margin: 45px auto 0; overflow: hidden;}
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>Boids Model</h1>
+        <ul>
+            
+            <li>separation: steer to avoid crowding local flockmates</li>
+            <li>alignment: steer towards the average heading of local flockmates</li>
+            <li>cohesion: steer to move towards the average position (center of mass) of local flockmates</li>
+        </ul>
+        <h1></h1>
+        <img src="./1.gif" alt="boids">
+        <img src="./2.gif" alt="boids">
+        <img src="./3.gif" alt="boids">
+
+    </div>
+</body>
+    

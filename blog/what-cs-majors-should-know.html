@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<head>
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta charset="utf-8">
+    <title>what-cs-majors-should-know </title>
+    <meta http-equiv="content-language" content="en">
+    <style  type="text/css">
+        * {padding: 0; margin: 0;}
+        a{text-decoration: none;}
+        /*
+        含泪去掉原神
+        body{
+            background-image:url(../genshin/水神.png);
+            background-position:right ;
+            background-attachment: fixed;
+            background-size: contain;
+            background-repeat: no-repeat;}
+        */
+        .wrap {
+            background: rgba(238, 238, 238, 0.4); 
+            width: 800px; 
+            text-align:start; 
+            padding: 40px 40px 10px; margin: 45px auto 0; overflow: hidden;
+            -moz-border-radius: 9px ;
+            border-radius: 9px ;
+            -o-box-shadow: 0 5px 5px #333333 ;
+            -webkit-box-shadow: 0 5px 5px #333333 ;
+            -moz-box-shadow: 0 5px 5px #333333 ;
+            box-shadow: 0 5px 5px #333333 ;
+
+        }
+        .english {
+            background:rgba(202, 202, 202, 0.4); 
+            display:block ;
+            padding: 10px;
+            margin:5px;
+            border: 2px solid gray;
+            font-size :25px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .Chinese{
+            padding-left: 5px;
+            font-size :20px;
+            list-style:none;
+        }
+        .wrap h1{
+            padding: 10px;
+            margin:10px;
+        }
+        .wrap h2{
+            margin:20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>From<a href="https://matt.might.net/articles/what-cs-majors-should-know/"> what-cs-majors-should-know</a></h1>
+    <div class="wrap" >
+        
+        <h1>Portfolio versus resume</h1>
+        <h2>作品集vs简历</h2>
+        <li class="english">Every computer science major should build a portfolio.</li>
+        <li class="Chinese">每个计算机科学专业的学生都应该建立一个作品集</li>
+        <li class="english">A portfolio could be as simple as a personal blog, with a post for each project or accomplishment. </li>
+        <li class="Chinese">作品集可以像个人博客一样简单，每个项目或成就都有一篇文章。</li>
+        <li class="english">A better portfolio would include per-project pages, and publicly browsable code (hosted perhaps on github ).</li>
+        <li class="Chinese">一个更好的作品集应该包括每个项目的页面，以及可公开浏览的代码(可能托管在github)。</li>
+        <li class="english">Contributions to open source should be linked and documented.</li>
+        <li class="Chinese">对开源的贡献应该被链接和记录。</li>
+        <li class="english">Professors should design course projects to impress on portfolios, and students, at the conclusion of each course, should take time to update them.</li>
+        <li class="Chinese">教授应该设计课程项目来给作品集留下深刻印象，而学生在每门课程结束时，应该花时间更新它们。
+            <br></li>
+        <br>
+        <h3>example</h3>
+        <br>
+        <li><a href="http://ezyang.com/">Edward Yang's web site</a>.</li>
+        <li><a href="http://pydanny.blogspot.com/2011/08/github-is-my-resume.html">Github is my resume</a>.</li>
+    </div>
+
+    <div class="wrap">
+        <h1>Cryptography</h1>
+        <h2>密码学</h2>
+        <li class="english">Cryptography is what makes much of our digital lives possible.</li>
+        <li class="Chinese">密码学使我们的数字生活成为可能。</li>
+        <li class="english">Computer scientists should understand and be able to implement the following concepts, as well as the common pitfalls in doing so:</li>
+        <li class="Chinese">计算机科学家应该理解并能够实现以下概念，以及这样做的常见陷阱:</li>
+        <ul>
+        <li class="english">symmetric-key cryptosystems;</li>
+        <li class="Chinese">对称密钥密码体制;</li>
+        <li class="english">public-key cryptosystems;</li>
+        <li class="Chinese">公钥密码机制;</li>
+        <li class="english">secure hash functions;</li>
+        <li class="Chinese">安全哈希函数; </li>
+        <li class="english">challenge-response authentication;</li>
+        <li class="Chinese">质询-响应身份验证;</li>
+        <li class="english">digital signature algorithms; </li>
+        <li class="Chinese">数字签名算法;</li>
+        <li class="english">threshold cryptosystems.</li>
+        <li class="Chinese">阈值密码。</li>
+        </ul>
+        <li class="english">Since it's a common fault in implementations of cryptosystems, 
+        every computer scientist should know how to acquire a sufficiently random number for the task at hand.</li>
+        <li class="Chinese">获取足够的随机数 在密码系统实现中是一个常见问题，应该知道如何为手头的事获取足够的随机数。
+        </li>
+        <li class="english">At the very least, as nearly every data breach has shown, computer scientists need to know how to salt and hash passwords for storage.</li>
+        <li class="Chinese">至少，正如几乎每一次数据泄露所表明的那样，需要知道如何对密码进行盐化和散列存储。
+       </li>
+        <br>
+        <h3>Specific recommendations</h3>
+        <br>
+        <li class="english">Every computer scientist should have the pleasure of breaking ciphertext using pre-modern cryptosystems with hand-rolled statistical tools.</li>
+        应该对 使用密码系统和手工统计工具 破解密文 感兴趣。
+        <li class="english"><a href="https://matt.might.net/articles/implementation-of-rsa-public-key-cryptography-algorithm-in-scheme-dialect-of-lisp/">RSA</a>.
+             is easy enough to implement that everyone should do it.</li>
+             <li class="Chinese">RSA很容易实现,应该去做。
+        </li>
+        <li class="english"> Every student should create their own digital certificate and set up https in apache. (It's surprisingly arduous to do this.)</li>
+        <li class="Chinese">每个学生都应该创建自己的数字证书,并在apache中设置https。(做这件事出奇地困难。)</li>
+        <li class="english">Student should also write a console web client that connects over SSL.</li>
+        <li class="Chinese">学生还应该编写一个通过SSL连接的控制台web客户端。</li>
+        <li class="english">As strictly practical matters, computer scientists should know how to use GPG; how to use public-key authentication for ssh;
+        and how to encrypt a directory or a hard disk.</li>
+        <li class="Chinese">作为严格的实际问题,计算机科学家应该知道如何使用GPG;如何对ssh使用公钥认证;以及如何加密目录或硬盘。</li>
+    </div>
+
+    <div class="wrap">
+        <h1>User experience design</h1>
+        <h2>用户体验设计</h2>
+        <li class="english">Programmers too often write software for other programmers, or worse, for themselves.</li>
+        <li class="Chinese">程序员经常为其他程序员编写软件，更糟的是，为自己编写软件</li>
+        <li class="english">User interface design (or more broadly, user experience design) might be the most underappreciated aspect of computer science.</li>
+        <li class="Chinese">用户界面设计(或者更广泛地说，用户体验设计)可能是计算机科学中最被低估的方面。</li>
+        <li class="english">There's a misconception, even among professors, that user experience is a "soft" skill that can't be taught.</li>
+        <li class="Chinese">甚至在教授中也存在一种误解，即用户体验是一种无法教授的“软”技能。</li>
+        <li class="english">In reality, modern user experience design is anchored in empirically-wrought principles from human factors engineering and industrial design.</li>
+        <li class="Chinese">事实上，现代用户体验设计 是 基于人因工程和工业设计的 经验原则</li>
+        <li class="Chinese">
+            "human factors engineering" 可以翻译为 "人因工程"，指的是研究人类行为和心理对工程系统设计的影响，旨在优化系统的易用性、安全性和效率性。
+            "industrial design" 翻译为 "工业设计"，是一种将艺术、商业和工程学融合在一起的设计领域，致力于设计和开发各种产品、设备或系统，使其在美学、功能和实用性方面达到最佳状态。        
+        </li>
+        <li class="english">If nothing else, computer scientists should know that interfaces need to make the ease of executing any task proportional to the frequency of the task multiplied by its importance.</li>
+        <li class="Chinese">如果没有别的，计算机科学家应该知道，接口需要使执行任何任务变容易 重要性与任务的频率成正比。</li>
+        <li class="english">As a practicality, every programmer should be comfortable with designing usable web interfaces in HTML, CSS and JavaScript.</li>
+        <li class="Chinese">作为一种实用性技能，每个程序员都应该熟悉使用 HTML、CSS 和 JavaScript 设计易用的 Web 界面。</li>
+        <br>
+        <h3>Recommended reading</h3>
+        <br>
+        <li>Paul Graham's<a href="http://www.paulgraham.com/web20.html"> essay on Web 2.0.</a></li>
+        <li><a href="https://www.joelonsoftware.com/2003/10/08/the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-no-excuses/">
+            "The Minimum Every Software Developer Must Know About Unicode and Character Sets</a> by Spolsky.</li>
+        <li>HTML and CSS</li>
+        <li>JavaScript</li>
+    
+    </div>
+
+    <div class="wrap">
+        <h1>Visualization</h1>
+        <h2>可视化</h2>
+        <li class="english">Good visualization is about rendering data in such a fashion that humans perceive it as information. This is not an easy thing to do.</li>
+        <li class="Chinese">良好的可视化是将数据呈现为信息的一种方式，以便人类能够感知。这并不是一件容易的事情。</li>
+        <li class="english">The modern world is a sea of data, and exploiting the local maxima of human perception is key to making sense of it.</li>
+        <li class="Chinese">现代世界是一个数据的海洋，而充分利用人类感知的局部最大值是理解这一切的关键。</li>
+        <br>
+        <h3>Recommended reading</h3>
+        <br>
+        <li>The Visual Display of Quantitative Information by Tufte.</li>
+
+    </div>
+
+    <div class="wrap">
+        <h1>Formal methods</h1>
+        <h2>形式化方法</h2>
+        <li class="english">As the demands on secure, reliable software increase, formal methods may one day end up as the only means for delivering it.</li>
+        <li class="Chinese">随着对安全可靠软件的需求不断增加，形式化方法可能有朝一日成为交付此类软件的唯一手段。</li>
+        <li class="english">At present, formal modeling and verification of software remains challenging, but progress in the field is steady: it gets easier every year.</li>
+        <li class="Chinese">目前，软件的形式化建模和验证仍然具有挑战性，但该领域的进展是稳步的：每年都在变得更容易。</li>
+        <li class="english">There may even come a day within the lifetime of today's computer science majors where formal software construction is an expected skill.</li>
+        <li class="Chinese">甚至在当今计算机科学专业学生的生命周期内，形式化软件构建可能成为一个必备技能。</li>
+        <li class="english">Every computer scientist should be at least moderately comfortable using one theorem prover. (I don't think it matters which one.)</li>
+        <li class="Chinese">每位计算机科学家至少应该能够适度地使用一个定理证明器。（我认为使用哪个定理证明器并不重要。）</li>
+        <li class="english">Learning to use a theorem prover immediately impacts coding style.</li>
+        <li class="Chinese">学习使用定理证明器会立即影响编码风格。</li>
+        <li class="english">For example, one feels instinctively allergic to writing a match or switch statement that doesn't cover all possibilities.</li>
+        <li class="Chinese">例如，人们本能地对于不覆盖所有可能性的匹配或切换语句感到排斥。</li>
+        <li class="english">And, when writing recursive functions, users of theorem provers have a strong urge to eliminate ill-foundedness.</li>
+        <li class="Chinese">而且，在编写递归函数时，定理证明器的用户会强烈地倾向于消除非良好基础。</li>
+        <br>
+        <h3>Recommended reading.</h3>
+        <br>
+        <li><a href="https://softwarefoundations.cis.upenn.edu/">Foundations</a></li>
+        
+    </div>
+    
+    <div class="wrap">
+        <h1>Graphics and simulation</h1>
+        <h2>图形和仿真</h2>
+        <li class="english">There is no discipline more dominated by "clever" than graphics.</li>
+        <li class="Chinese">在计算机领域，没有比图形学更被“聪明”主导的学科了。</li>
+        <li class="english">The field is driven toward, even defined by, the "good enough."</li>
+        <li class="Chinese">该领域朝着甚至被定义为“足够好”的方向发展。</li>
+        <li class="english">As such, there is no better way to teach clever programming or a solid appreciation of optimizing effort than graphics and simulation.</li>
+        <li class="Chinese">因此，教授聪明的编程或对优化工作的充分理解，没有比图形学和模拟更好的方法了。</li>
+        <li class="english">Over half of the coding hacks I've learned came from my study of graphics.</li>
+        <li class="Chinese">我学到的编码技巧超过一半来自于我的图形学学习。</li>
+        <br>
+        <h3>Specific recommendations</h3>
+        <br>
+        <li class="english">Simple ray tracers can be constructed in under 100 lines of code.</li>
+        <li class="Chinese">简单的光线追踪器可以用不到100行的代码构建。</li>
+        <li class="english">It's good mental hygiene to work out the transformations necessary to perform a perspective 3D projection in a wireframe 3D engine.</li>
+        <li class="Chinese">在线框3D引擎中进行透视3D投影所需的变换对大脑的健康是有好处的。</li>
+        <li class="english">Data structures like BSP trees and algorithms like z-buffer rendering are great examples of clever design.</li>
+        <li class="Chinese">像BSP树这样的数据结构和像z缓冲渲染这样的算法是聪明设计的很好例子。</li>
+        <li class="english">In graphics and simulation, there are many more.</li>
+        <li class="Chinese">在图形学和模拟领域，还有更多。</li>
+        <br>
+        <h3>Recommended reading</h3>
+        <br>
+        <li>Mathematics for 3D Game Programming and Computer Graphics by Lengyel.</li>
+
+    </div>
+    
+    <div class="wrap">
+        <h1>Databases</h1>
+        <h2>数据库</h2>
+        <li class="english">Databases are too common and too useful to ignore.</li>
+        <li class="Chinese">数据库太常见且太有用，不容忽视。</li>
+        <li class="english">It's useful to understand the fundamental data structures and algorithms that power a database engine, since programmers often enough reimplement a database system within a larger software system.</li>
+        <li class="Chinese">了解支撑数据库引擎的基本数据结构和算法非常有用，因为程序员经常在更大的软件系统中重新实现数据库系统。</li>
+        <li class="english">Relational algebra and relational calculus stand out as exceptional success stories in sub-Turing models of computation.</li>
+        <li class="Chinese">关系代数和关系演算在次图灵计算模型中是非常成功的案例。</li>
+        <li class="english">Unlike UML modeling, ER modeling seems to be a reasonable mechanism for visualizing and encoding the design of and constraints upon a software artifact.</li>
+        <li class="Chinese">与UML建模不同，ER建模似乎是一种合理的机制，用于可视化并编码软件构件的设计和约束。</li>
+        <br>
+        <h3>Specific recommendations</h3>
+        <br>
+        <li class="Chinese">具体建议</li>
+        <li class="english">A computer scientist that can set up and operate a LAMP stack is one good idea and a lot of hard work away from running their own company.</li>
+        <li class="Chinese">一个能够设置和操作LAMP堆栈的计算机科学家，离创办自己的公司只有一个好主意和许多辛苦的工作。</li>
+        <br>
+        <h3>Recommended reading</h3>
+        <br>
+        <li class="english">SQL and Relational Theory by Date.</li>
+    </div>
+    
+    <div class="wrap">
+        <h1>Technical communication</h1>
+
+        <li class="english">Lone wolves in computer science are an endangered species.</li>
+        <li class="Chinese">计算机科学中的孤狼是一种濒危物种。</li>
+        <li class="english">Modern computer scientists must practice persuasively and clearly communicating their ideas to non-programmers.</li>
+        <li class="Chinese">现代计算机科学家必须有说服力地、清晰地向非程序员传达他们的想法。</li>
+        <li class="english">In smaller companies, whether or not a programmer can communicate her ideas to management may make the difference between the company's success and failure.</li>
+        <li class="Chinese">在较小的公司中，程序员能否将自己的想法传达给管理层，可能是公司成功与失败之间的关键。</li>
+        <li class="english">Unfortunately, this is not something fixed with the addition of a single class (although a solid course in technical communication doesn't hurt).</li>
+        <li class="Chinese">不幸的是，这并不是通过添加一个单一课程就能解决的问题（尽管一门扎实的技术沟通课程也是很有帮助的）。</li>
+        <li class="english">More classes need to provide students the opportunity to present their work and defend their ideas with oral presentations.</li>
+        <li class="Chinese">更多的课程需要为学生提供展示他们工作成果、用口头演讲为自己的想法辩护的机会。</li>
+        <br>
+        <h3>Specific recommendations</h3>
+        <br>
+        <li class="english">I would recommend that students master a presentation tool like PowerPoint or (my favorite) Keynote. (Sorry, as much as I love them, LaTeX-based presentation tools are just too static.)</li>
+        <li class="Chinese">我建议学生掌握类似PowerPoint或（我最喜欢的）Keynote这样的演示工具。（抱歉，尽管我很喜欢它们，但基于LaTeX的演示工具太过静态。）</li>
+        <li class="english">For producing beautiful mathematical documentation, LaTeX has no equal. All written assignments in technical courses should be submitted in LaTeX.</li>
+        <li class="Chinese">要制作漂亮的数学文档，LaTeX无与伦比。技术课程中的所有书面作业都应以LaTeX格式提交。</li>
+        <br>
+        <h3>Recommended reading</h3>
+        <br>
+        <li>Writing for Computer Science by Zobel.</li>
+        <li>Even a Geek Can Speak by Asher.</li>
+        <li>The LaTeX Companion.</li>
+        <li>The TeXbook by Knuth. (Warning: Experts only.)</li>
+        <li>Notes on <a href="https://www-cs-faculty.stanford.edu/~knuth/klr.html">Mathematical Writing.</a></li>
+        <li>Simon Peyton-Jones's advice on How to Give a Good Research Talk.</li>
+        <li>My advice on how to send and reply to email.</li>
+    </div>
+    
+    <br><br><br>
+</body>

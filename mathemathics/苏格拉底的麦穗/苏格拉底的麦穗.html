@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<head>
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta charset="utf-8">
+    <title>苏格拉底的麦穗 </title>
+    <meta http-equiv="content-language" content="en">
+    <style  type="text/css">
+        * {padding: 0; margin: 0;}
+        a{text-decoration: none;}
+
+        .wrap {
+            background: rgba(238, 238, 238, 0.4); 
+            width: 800px; 
+            text-align:start; 
+            padding: 40px 40px 10px; margin: 45px auto 0; overflow: hidden;
+            -moz-border-radius: 9px ;
+            border-radius: 9px ;
+            -o-box-shadow: 0 5px 5px #333333 ;
+            -webkit-box-shadow: 0 5px 5px #333333 ;
+            -moz-box-shadow: 0 5px 5px #333333 ;
+            box-shadow: 0 5px 5px #333333 ;
+
+        }
+        .english {
+            background:rgba(202, 202, 202, 0.4); 
+            display:block ;
+            padding: 10px;
+            margin:5px;
+            border: 2px solid gray;
+            font-size :25px;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        .Chinese{
+            padding-left: 5px;
+            font-size :20px;
+            list-style:none;
+        }
+        .wrap h1{
+            padding: 10px;
+            margin:10px;
+        }
+        .wrap h2{
+            margin:20px;
+        }
+
+    
+    </style>
+</head>
+<body>
+
+     <div class="wrap" >
+        <h2>苏格拉底的麦穗</h2>
+
+        <li class="Chinese">
+            苏格拉底和弟子们走到一片麦田里，风吹麦浪，阵阵秋意袭来。<br>
+            苏格拉底对弟子们说，“你们从麦田的这一头走到那一头，中间可以拾起一株麦穗，我们看看谁能找到最大的麦穗。” <br>
+            他接着说 “当然，你们只有一次机会，一旦选定了，之后即便遇到更大的麦穗，也不能再采摘；
+            而且你们也不能回头去采摘那些已经错过的大麦穗。” <br>
+            弟子们听完之后，面面相觑。
+            <br>
+        </li>
+     </div> 
+
+     <div class="wrap" >
+        <li class="Chinese">
+            另外一种描述：
+            苏格拉底带弟子们来到一片麦田，让他们在田间小路走过，每人选摘一支最大的麦穗，不能走回头路，且只能摘一枝。<br>
+            假设田间小路旁边一共有 n 只麦穗可以选择，最大麦穗出现在任何位置的概率均等，问如何摘下最大的麦穗？<br>
+        </li>
+     </div> 
+
+     <div class="wrap" >
+        <li class="Chinese">
+            我们可以制定类似的策略：<br>
+            前r株麦穗直接pass掉,仅仅记下r株里面最大麦穗的大小,记作M<br>
+            然后接下来的从r+1到n的麦穗,如果比M要大,那就选这一株麦穗;<br >
+            (如果到最后更好的麦穗都没有出现，就选择最后一株麦穗。)<br>
+
+        </li>
+        <br>
+        <li class="Chinese"> 
+            对于最大的一株麦穗,它出现在每一株麦穗的概率均等,且为1/n。
+            而对于r+1到n每一株麦穗,选取这一株麦穗k的前提是[1,k)中最大的麦穗在[1-r]中。
+            因此,选取这一株麦穗k的概率为:P=r/(k-1)<br>
+        </li>
+     </div> 
+
+     <div class="wrap" >
+        <img src="./function.png" />
+        <img src="./function2.png" height="360"width="620" />
+        <br>
+        <br>
+     </div>
+    
+    
+</body>

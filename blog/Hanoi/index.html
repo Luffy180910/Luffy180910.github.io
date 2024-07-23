@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport">
+    <title>Tower of Hanoi</title>
+    <link rel="shortcut icon" href="../../favicon.ico" />
+    <script>
+        let Tower = [[], [], []];
+        let TempTower=[[],[],[]];
+        var n=5;
+        function move(m, a, b, c) {
+            if (m === 1) {
+                headmove(a, c);
+                draw(n);
+                document.getElementById("print").innerHTML += "<li>--------------------------------------------------------------------------</li><br>";
+                
+                return;
+            }
+            move(m - 1, a, c, b);
+            headmove(a, c);
+            draw(n);
+            document.getElementById("print").innerHTML += "<li>--------------------------------------------------------------------------</li><br>";
+            move(m - 1, b, a, c);
+        }
+        
+        function headmove(x, y) {
+          
+            for (let i = 0; i < n; i++) {
+                if (Tower[x][i] != 0) {
+                    Tower[y][i] = Tower[x][i];
+                    Tower[x][i] = 0;
+                    return;
+                }
+            }
+        }
+        
+        function TowerDown(){
+            for (let i = 0; i < n; i++) {
+                TempTower[0][i] = 0;
+                TempTower[1][i] = 0;
+                TempTower[2][i] = 0;
+            }
+            
+            for(let k=0;k<3;k++){
+                for (let i = 0,j = 0; i < n; i++,j++) {
+                    while(Tower[k][n-i-1]==0){
+                        i++;
+                    }
+                    if(i<n&&j<n)
+                        TempTower[k][n-j-1]=Tower[k][n-i-1];
+                }
+            }
+
+
+        }
+
+        function draw(m) {
+            TowerDown();
+            for (let i = 0; i < m; i++) {
+                let a = TempTower[0][i];
+                let b = TempTower[1][i];
+                let c = TempTower[2][i];
+                picture(m, a);
+                picture(m, b);
+                picture(m, c);
+                document.getElementById("print").innerHTML += "<br>";
+
+            }
+        }
+        
+        function picture(m, number) {
+            for (let i = 0; i < m - number; i++) {
+                document.getElementById("print").innerHTML +="&nbsp;&nbsp;";
+            }
+            for (let i = 0; i < 2 * number-1; i++) {
+                document.getElementById("print").innerHTML +="1";
+            }
+            for (let i = 0; i < m - number; i++) {
+                document.getElementById("print").innerHTML +="&nbsp;&nbsp;";
+            }
+            if(number!=0){
+                document.getElementById("print").innerHTML +="&nbsp;&nbsp;";
+            }
+        }
+        
+
+        function solveTowerOfHanoi() {
+            n = parseInt(document.getElementById('diskNumber').value);
+            document.getElementById("print").innerHTML ="";
+            for (let i = 0; i < n; i++) {
+                Tower[0][i] = i + 1;
+                Tower[1][i] = 0;
+                Tower[2][i] = 0;
+            }
+
+            draw(n);
+            document.getElementById("print").innerHTML += "<li>--------------------------------------------------------------------------</li><br>";
+            move(n, 0, 1, 2);
+        }
+    </script>
+
+</head>
+<body>
+    <h1>Tower of Hanoi Solver</h1>
+
+    <label for="diskNumber">Enter the number of disks(a number should <=6):</label>
+    <input type="text" id="diskNumber" placeholder="Enter a number">
+    <button onclick="solveTowerOfHanoi()">Solve</button>
+    <div>
+        <h2>Rule</h2>
+        <ol>
+            <li>Only one disk may be moved at a time.</li>
+            <li>Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.</li>
+            <li>No disk may be placed on top of a disk that is smaller than it.</li>
+        </ol>
+        <img src="./tower-of-hanoi.png" width="312.5" height="259"/></picture>
+        <h3>the process picture</h3>
+
+    </div>
+    <div id="print">
+        
+    </div>
+    
+</body>
+</html>
