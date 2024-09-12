@@ -1,0 +1,437 @@
+﻿<html>
+	<head>
+		<title>CM20219 – Coursework 2 – WebGL</title>
+        <meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<style>
+			body { margin: 0; overflow: hidden; }
+			canvas { width: 100%; height: 100%; }
+		</style>
+	</head>
+	<body>
+		<script src="three.js"></script>
+        <script src="OBJloader.js"></script>
+		<script>
+            "use strict"; // https://stackoverflow.com/q/1335851/72470
+
+            // Global variables that are available in all functions.
+            // Note: You can add your own here, e.g. to store the rendering mode.
+            var camera, scene, renderer, mesh;
+            var cube, edgesCube, verticesCube, texturesCube, bunny, edgesBunny, verticesBunny;
+            var shouldRotate, rotateEdgesBunny, rotateVerticesBunny = false;
+            var lookAtVector = new THREE.Vector3(0, 0, 0);
+
+
+            // Initialise the scene, and draw it for the first time.
+            init();
+			animate();
+
+            // Listen for keyboard events, to react to them.
+            // Note: there are also other event listeners, e.g. for mouse events.
+            document.addEventListener('keydown', handleKeyDown);
+
+            // Scene initialisation. This function is only run once, at the very beginning.
+            function init()
+            {
+                scene = new THREE.Scene();
+
+                // Set up the camera, move it to (3, 4, 5) and look at the origin (0, 0, 0).
+                camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+                camera.position.set(3, 4, 5);
+                camera.lookAt(new THREE.Vector3(0, 0, 0));
+
+                // Draw a helper grid in the x-z plane (note: y is up).
+                scene.add(new THREE.GridHelper(10, 20, 0xffffff));
+
+                // TO DO: Draw a cube (requirement 1).
+                createCube();
+                createEdgesCube();
+                createVerticesCube();
+                createTexturesCube();
+                createBunny();
+                scene.add(cube);
+
+                // TO DO: Visualise the axes of the global coordinate system (requirment 2).
+                var material = new THREE.LineBasicMaterial({
+                    color: 0xff0000
+                });
+                var geometry = new THREE.Geometry();
+                geometry.vertices.push(new THREE.Vector3(-10, 0, 0));
+                geometry.vertices.push(new THREE.Vector3(10, 0, 0));
+                var line = new THREE.Line(geometry, material);
+                scene.add(line);
+
+                var material = new THREE.LineBasicMaterial({
+                    color: 0x00ff00
+                });
+                var geometry = new THREE.Geometry();
+                geometry.vertices.push(new THREE.Vector3(0, -10, 0));
+                geometry.vertices.push(new THREE.Vector3(0, 10, 0));
+                var line = new THREE.Line(geometry, material);
+                scene.add(line);
+
+                var material = new THREE.LineBasicMaterial({
+                    color: 0x0000ff
+                });
+                var geometry = new THREE.Geometry();
+                geometry.vertices.push(new THREE.Vector3(0, 0, -10));
+                geometry.vertices.push(new THREE.Vector3(0, 0, 10));
+                var line = new THREE.Line(geometry, material);
+                scene.add(line);
+
+
+                // Basic ambient lighting.
+                // scene.add(new THREE.AmbientLight(0xffffff));
+                // TO DO: add more complex lighting for 'face' rendering mode (requirement 4).
+                var dirLight = new THREE.DirectionalLight(0xff0000)
+                dirLight.position.set(-5, 5, 5);
+                scene.add(dirLight);
+
+                var dirLight = new THREE.DirectionalLight(0x00ff00)
+                dirLight.position.set(5, -5, 5);
+                scene.add(dirLight);
+
+                var dirLight = new THREE.DirectionalLight(0x0000ff)
+                dirLight.position.set(5, 5, -5);
+                scene.add(dirLight);
+
+                // Set up the Web GL renderer.
+                renderer = new THREE.WebGLRenderer({ antialias: true });
+				renderer.setPixelRatio(window.devicePixelRatio); // HiDPI/retina rendering
+                renderer.setSize(window.innerWidth, window.innerHeight);
+                document.body.appendChild(renderer.domElement);
+
+                // Handle resizing of the browser window.
+				window.addEventListener('resize', handleResize, false);
+            }
+
+            // // Handle resizing of the browser window.
+            // function handleResize()
+            // {
+			// 	camera.aspect = window.innerWidth / window.innerHeight;
+			// 	camera.updateProjectionMatrix();
+			// 	renderer.setSize(window.innerWidth, window.innerHeight);
+			// }
+
+            // // Animation loop function. This function is called whenever an update is required.
+			// function animate()
+            // {
+			// 	requestAnimationFrame(animate);
+
+            //     // TO DO: This is a good place for code that rotates your cube (requirement 3).
+
+            //     // Render the current scene to the screen.
+			// 	renderer.render(scene, camera);
+			// }
+
+            // Handle keyboard presses.
+            function handleKeyDown(event)
+            {
+                switch (event.keyCode)
+                {
+                    
+                // Render modes.
+                case 70: // f = facescene.remove(texturesCube);
+                    scene.remove(edgesCube);
+                    scene.remove(verticesCube);
+                    scene.add(cube);
+                    break;
+
+                case 69: // e = edge
+                    scene.remove(texturesCube);
+                    scene.remove(cube);
+                    scene.remove(verticesCube);
+                    scene.add(edgesCube);
+                    break;
+
+                
+                case 86: // v = vertex
+                    scene.remove(texturesCube);
+                    scene.remove(cube);
+                    scene.remove(edgesCube);
+                    scene.add(verticesCube);
+                    break;
+
+                // TO DO: add code for starting/stopping rotations (requirement 3).
+                    
+                case 84: //t = show textures cube
+                    scene.remove(cube);
+                    scene.remove(edgesCube);
+                    scene.remove(verticesCube);
+                    scene.add(texturesCube);
+                    break;
+
+                case 82: //r = rotate
+                    shouldRotate = !shouldRotate;
+                    break;
+
+                case 68: //d = move right
+                    translateCameraOnAxis(new THREE.Vector3(1, 0, 0), 0.5);
+                    break;
+
+                case 65: //a = move left
+                    translateCameraOnAxis(new THREE.Vector3(1, 0, 0), -0.5);
+                    break;
+
+                case 87: //w = move up
+                    translateCameraOnAxis(new THREE.Vector3(0, 1, 0), 0.5);
+                    break;
+
+                case 83: //s = move down
+                    translateCameraOnAxis(new THREE.Vector3(0, 1, 0), -0.5);
+                    break;
+
+                case 38: //down arrow = move backwards
+                    translateCameraOnAxis(new THREE.Vector3(0, 0, 1), -0.5);
+                    break;
+
+                case 40: //up arrow = move forwards
+                    translateCameraOnAxis(new THREE.Vector3(0, 0, 1), 0.5);
+                    break;
+
+                case 73: //i = orbit vertically up
+                    orbitUp();
+                    break;
+
+                case 75: //k = orbit vertically down
+                    orbitDown();
+                    break;
+
+                case 74: //j = orbit horzontally negative
+                    orbitLeft();
+                    break;
+
+                case 76: //l = orbit horizontally positive
+                    orbitRight();
+                    break;
+
+                case 66: //b = show faces bunny
+                    scene.remove(edgesBunny);
+                    scene.remove(verticesBunny);
+                    scene.add(bunny);
+                    break;
+
+                case 78: //n = show edges bunny
+                    scene.remove(bunny);
+                    scene.remove(verticesBunny);
+                    createEdgesBunny();
+                    scene.add(edgesBunny);
+                    break;
+
+                case 77: //m = show vertices bunny
+                    scene.remove(bunny);
+                    scene.remove(edgesBunny);
+                    createVerticesBunny();
+                    scene.add(verticesBunny);
+                    break;
+
+                }
+            }
+
+
+
+        //Task 1: create a cube/Task 7: Cube with textures mapped
+        function createCube() {
+            var texture = new THREE.TextureLoader().load();
+            var geometry = new THREE.BoxBufferGeometry(2, 2, 2);
+            var material = new THREE.MeshLambertMaterial();
+            cube = new THREE.Mesh(geometry, material);
+        }
+
+        function createTexturesCube() {
+            var texture = new THREE.TextureLoader().load();
+            var texturesGeometry = new THREE.BoxBufferGeometry(2, 2, 2);
+            var material = (true) ? loadCubeTextures() : new THREE.MeshLambertMaterial();
+            texturesCube = new THREE.Mesh(texturesGeometry, material);
+        }
+
+        //Task 4: Create new cubes for different render modes
+        function createEdgesCube() {
+            var edgesGeometry = new THREE.EdgesGeometry(cube.geometry);
+            edgesCube = new THREE.LineSegments(edgesGeometry);
+        }
+
+        function createVerticesCube() {
+            var verticesGeometry = new THREE.BoxBufferGeometry(2, 2, 2);
+            var newMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 0.2
+            });
+
+            verticesCube = new THREE.Points(verticesGeometry, newMaterial)
+        }
+
+        // Handle resizing of the browser window.
+        function handleResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        //Task 3: Rotate any object
+        function rotate(o) {
+            var SPEED = 0.02;
+            o.rotation.x += SPEED;
+            o.rotation.y += SPEED;
+            o.rotation.z += SPEED;
+        }
+
+        //Task 5: Translate the camera on a given axis
+        function translateCameraOnAxis(axisVector, amount) {
+            var cameraRotation = camera.quaternion; // camera's local rotation as a quaternion
+            axisVector.applyQuaternion(cameraRotation); // apply the rotation to the z axis
+            camera.position.add(axisVector.multiplyScalar(amount)); // add the resulting vector to the camera's position
+        }
+
+        //Task 6: Orbit the camera around the cube
+
+        //Orbit the camera on the horizontal axis
+        function orbitLeft() {
+            var spherical = new THREE.Spherical;
+            spherical.setFromVector3(camera.position);
+            spherical.theta = spherical.theta - 0.1;
+            spherical.makeSafe();
+            camera.position.setFromSpherical(spherical);
+            camera.position.add(lookAtVector);
+            camera.lookAt(lookAtVector);
+        }
+
+        function orbitRight() {
+            var spherical = new THREE.Spherical;
+            spherical.setFromVector3(camera.position);
+            spherical.theta = spherical.theta + 0.1;
+            spherical.makeSafe();
+            camera.position.setFromSpherical(spherical);
+            camera.position.add(lookAtVector);
+            camera.lookAt(lookAtVector);
+        }
+
+        //Orbit the camera on the vertical axis
+        function orbitUp() {
+            var spherical = new THREE.Spherical;
+            spherical.setFromVector3(camera.position);
+            spherical.phi = spherical.phi - 0.1;
+            spherical.makeSafe();
+            camera.position.setFromSpherical(spherical);
+            camera.position.add(lookAtVector);
+            camera.lookAt(lookAtVector);
+
+        }
+
+        function orbitDown() {
+            var spherical = new THREE.Spherical;
+            spherical.setFromVector3(camera.position);
+            spherical.phi = spherical.phi + 0.1;
+            spherical.makeSafe();
+            camera.position.setFromSpherical(spherical);
+            camera.position.add(lookAtVector);
+            camera.lookAt(lookAtVector);
+        }
+
+        //Task 7: Load the textures to apply to the cube
+        function loadCubeTextures() {
+
+            var textureLoader = new THREE.TextureLoader();
+            var materials = [
+                new THREE.MeshBasicMaterial({
+                    map: textureLoader.load(`Textures/arsenal1.png`)
+                }),
+                new THREE.MeshBasicMaterial({
+                    map: textureLoader.load(`Textures/arsenal2.png`)
+                }),
+                new THREE.MeshBasicMaterial({
+                    map: textureLoader.load(`Textures/arsenal3.png`)
+                }),
+                new THREE.MeshBasicMaterial({
+                    map: textureLoader.load(`Textures/arsenal4.jpeg`)
+                }),
+                new THREE.MeshBasicMaterial({
+                    map: textureLoader.load(`Textures/arsenal5.jpeg`)
+                }),
+                new THREE.MeshBasicMaterial({
+                    map: textureLoader.load(`Textures/arsenal6.jpeg`)
+                }),
+            ];
+            return materials;
+        }
+
+        //Task 8: Load the bunny mesh model, scale the object and set it to be global
+        function createBunny() {
+            var bunnyLoad = new THREE.OBJLoader();
+            bunnyLoad.load(
+                'bunny-5000.obj',
+                function (object) {
+                    object.scale.set(0.4, 0.4, 0.4);
+                    object.position.x -= 0.5;
+                    object.position.y -= 0.5;
+                    object.position.z -= 0.5;
+                    bunny = object;
+
+                }
+            )
+        }
+
+        //Task 9: Create other render modes for the bunny
+
+        //Edges render mode
+        function createEdgesBunny() {
+
+            if (!rotateEdgesBunny) rotateEdgesBunny = true;
+
+            var bunGeom = bunny.children[0].geometry;
+
+            var bunMat = new THREE.MeshBasicMaterial({
+                color: 0xffffff,
+                wireframe: true
+            });
+
+            edgesBunny = new THREE.Mesh(bunGeom, bunMat);
+
+            edgesBunny.scale.set(0.4, 0.4, 0.4);
+            edgesBunny.position.x -= 0.5;
+            edgesBunny.position.y -= 0.5;
+            edgesBunny.position.z -= 0.5;
+
+        }
+
+        //Vertices render mode
+        function createVerticesBunny() {
+            if (!rotateVerticesBunny) rotateVerticesBunny = true;
+
+            var bunnyGeometry = bunny.children[0].geometry;
+
+            var pointMaterial = new THREE.PointsMaterial({
+                color: 0xffffff,
+                size: 0.02
+            });
+            verticesBunny = new THREE.Points(bunnyGeometry, pointMaterial);
+
+            verticesBunny.scale.set(0.4, 0.4, 0.4);
+            verticesBunny.position.x -= 0.5;
+            verticesBunny.position.y -= 0.5;
+            verticesBunny.position.z -= 0.5;
+        }
+
+        // Animation loop function. This function is called whenever an update is required.
+        function animate() {
+            requestAnimationFrame(animate);
+
+            //Check whether rotate button has been pressed
+            if (shouldRotate) {
+                rotate(cube);
+                rotate(edgesCube);
+                rotate(verticesCube);
+                rotate(texturesCube);
+                rotate(bunny);
+                //rotate if the bunnys have been loading
+                if (rotateEdgesBunny) rotate(edgesBunny);
+                if (rotateVerticesBunny) rotate(verticesBunny);
+            }
+
+            // Render the current scene to the screen.
+            renderer.render(scene, camera);
+        }
+
+		</script>
+	</body>
+</html>
