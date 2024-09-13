@@ -154,6 +154,31 @@
 
                 // TO DO: add code for starting/stopping rotations (requirement 3).
                     
+                case 82: //r = rotate
+                    shouldRotate = !shouldRotate;
+                    break;
+
+                case 88: //x rotate arround x axis
+                    rotate_x(cube);
+                    rotate_x(edgesCube);
+                    rotate_x(verticesCube);
+                    rotate_x(texturesCube);
+                    break;
+                
+                case 89: //y rotate arround y axis
+                    rotate_y(cube);
+                    rotate_y(edgesCube);
+                    rotate_y(verticesCube);
+                    rotate_y(texturesCube);
+                    break;
+
+                case 90: //z rotate arround z axis
+                    rotate_z(cube);
+                    rotate_z(edgesCube);
+                    rotate_z(verticesCube);
+                    rotate_z(texturesCube);
+                    break;
+
                 case 84: //t = show textures cube
                     scene.remove(cube);
                     scene.remove(edgesCube);
@@ -161,9 +186,6 @@
                     scene.add(texturesCube);
                     break;
 
-                case 82: //r = rotate
-                    shouldRotate = !shouldRotate;
-                    break;
 
                 case 68: //d = move right
                     translateCameraOnAxis(new THREE.Vector3(1, 0, 0), 0.5);
@@ -269,11 +291,17 @@
         }
 
         //Task 3: Rotate any object
-        function rotate(o) {
+        function rotate_x(o) {
             var SPEED = 0.02;
             o.rotation.x += SPEED;
+        }
+        function rotate_y(o) {
+            var SPEED = 0.02;
             o.rotation.y += SPEED;
-            o.rotation.z += SPEED;
+        }
+        function rotate_z(o) {
+            var SPEED = 0.02;
+            o.rotation.x += SPEED;
         }
 
         //Task 5: Translate the camera on a given axis
