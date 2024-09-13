@@ -113,16 +113,16 @@
 			// 	renderer.setSize(window.innerWidth, window.innerHeight);
 			// }
 
-            // // Animation loop function. This function is called whenever an update is required.
-			// function animate()
-            // {
-			// 	requestAnimationFrame(animate);
+            // Animation loop function. This function is called whenever an update is required.
+			function animate()
+            {
+				requestAnimationFrame(animate);
 
-            //     // TO DO: This is a good place for code that rotates your cube (requirement 3).
+                // TO DO: This is a good place for code that rotates your cube (requirement 3).
 
-            //     // Render the current scene to the screen.
-			// 	renderer.render(scene, camera);
-			// }
+                // Render the current scene to the screen.
+				renderer.render(scene, camera);
+			}
 
             // Handle keyboard presses.
             function handleKeyDown(event)
@@ -154,9 +154,6 @@
 
                 // TO DO: add code for starting/stopping rotations (requirement 3).
                     
-                case 82: //r = rotate
-                    shouldRotate = !shouldRotate;
-                    break;
 
                 case 88: //x rotate arround x axis
                     rotate_x(cube);
@@ -246,7 +243,6 @@
                     createVerticesBunny();
                     scene.add(verticesBunny);
                     break;
-
                 }
             }
 
@@ -438,26 +434,6 @@
             verticesBunny.position.x -= 0.5;
             verticesBunny.position.y -= 0.5;
             verticesBunny.position.z -= 0.5;
-        }
-
-        // Animation loop function. This function is called whenever an update is required.
-        function animate() {
-            requestAnimationFrame(animate);
-
-            //Check whether rotate button has been pressed
-            if (shouldRotate) {
-                rotate(cube);
-                rotate(edgesCube);
-                rotate(verticesCube);
-                rotate(texturesCube);
-                rotate(bunny);
-                //rotate if the bunnys have been loading
-                if (rotateEdgesBunny) rotate(edgesBunny);
-                if (rotateVerticesBunny) rotate(verticesBunny);
-            }
-
-            // Render the current scene to the screen.
-            renderer.render(scene, camera);
         }
 
 		</script>
