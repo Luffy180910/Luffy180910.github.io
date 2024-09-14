@@ -12,6 +12,7 @@
 		<script src="three.js"></script>
         <script src="OBJloader.js"></script>
 		<script>
+            // import dicesix from '@/assets/dicesix.obj';
             "use strict"; // https://stackoverflow.com/q/1335851/72470
 
             // Global variables that are available in all functions.
@@ -131,7 +132,8 @@
                 {
                     
                 // Render modes.
-                case 70: // f = facescene.remove(texturesCube);
+                case 70: // f = face
+                    scene.remove(texturesCube);
                     scene.remove(edgesCube);
                     scene.remove(verticesCube);
                     scene.add(cube);
@@ -257,11 +259,13 @@
         }
 
         function createTexturesCube() {
-            var texture = new THREE.TextureLoader().load();
+            var textureLoader = new THREE.TextureLoader();
             var texturesGeometry = new THREE.BoxBufferGeometry(2, 2, 2);
-            var material = (true) ? loadCubeTextures() : new THREE.MeshLambertMaterial();
-            texturesCube = new THREE.Mesh(texturesGeometry, material);
-        }
+            // var materials = new THREE.({  map: textureLoader.load( 'dice-six/dice-six-faces-five.png') });
+            var materials= loadCubeTextures();
+            texturesCube = new THREE.Mesh(texturesGeometry, materials);
+            // scene.add(texturesCube);
+        }            
 
         //Task 4: Create new cubes for different render modes
         function createEdgesCube() {
@@ -355,16 +359,16 @@
         //Task 7: Load the textures to apply to the cube
         function loadCubeTextures() {
 
-            var textureLoader = new THREE.TextureLoader();
-            var materials = [
+            const textureLoader = new THREE.TextureLoader();
+            const materials = [
                 new THREE.MeshBasicMaterial({
-                    map: textureLoader.load(`Textures/arsenal1.png`)
+                    map: textureLoader.load("../dice-six/dice-six-faces-one.jpg")
                 }),
                 new THREE.MeshBasicMaterial({
-                    map: textureLoader.load(`Textures/arsenal2.png`)
+                    map: textureLoader.load('./dice-six/dice-six-faces-one.jpg')
                 }),
                 new THREE.MeshBasicMaterial({
-                    map: textureLoader.load(`Textures/arsenal3.png`)
+                    map: textureLoader.load(`./dice-six/dice-six-faces-one.jpg`)
                 }),
                 new THREE.MeshBasicMaterial({
                     map: textureLoader.load(`Textures/arsenal4.jpeg`)
