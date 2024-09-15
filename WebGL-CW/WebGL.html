@@ -63,7 +63,7 @@
                 scene.add(line);
 
                 var material = new THREE.LineBasicMaterial({
-                    color: 0x00ff00
+                    color: 0x0000ff
                 });
                 var geometry = new THREE.Geometry();
                 geometry.vertices.push(new THREE.Vector3(0, -10, 0));
@@ -72,7 +72,7 @@
                 scene.add(line);
 
                 var material = new THREE.LineBasicMaterial({
-                    color: 0x0000ff
+                    color: 0x00ff00
                 });
                 var geometry = new THREE.Geometry();
                 geometry.vertices.push(new THREE.Vector3(0, 0, -10));
@@ -88,11 +88,11 @@
                 dirLight.position.set(-5, 5, 5);
                 scene.add(dirLight);
 
-                var dirLight = new THREE.DirectionalLight(0x00ff00)
+                var dirLight = new THREE.DirectionalLight(0x0000ff)
                 dirLight.position.set(5, -5, 5);
                 scene.add(dirLight);
 
-                var dirLight = new THREE.DirectionalLight(0x0000ff)
+                var dirLight = new THREE.DirectionalLight(0x00ff00)
                 dirLight.position.set(5, 5, -5);
                 scene.add(dirLight);
 
@@ -254,15 +254,14 @@
         function createCube() {
             var texture = new THREE.TextureLoader().load();
             var geometry = new THREE.BoxBufferGeometry(2, 2, 2);
-            var material = new THREE.MeshLambertMaterial();
+            var material = new THREE.LineBasicMaterial();
             cube = new THREE.Mesh(geometry, material);
         }
 
         function createTexturesCube() {
             var textureLoader = new THREE.TextureLoader();
             var texturesGeometry = new THREE.BoxBufferGeometry(2, 2, 2);
-            // var materials = new THREE.({  map: textureLoader.load( 'dice-six/dice-six-faces-five.png') });
-            var materials= loadCubeTextures();
+            var materials = new THREE.MeshLambertMaterial();
             texturesCube = new THREE.Mesh(texturesGeometry, materials);
             // scene.add(texturesCube);
         }            
