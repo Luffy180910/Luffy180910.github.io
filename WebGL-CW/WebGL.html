@@ -263,7 +263,7 @@
             var texturesGeometry = new THREE.BoxBufferGeometry(2, 2, 2);
             var materials = new THREE.MeshLambertMaterial();
             texturesCube = new THREE.Mesh(texturesGeometry, materials);
-            // scene.add(texturesCube);
+            scene.add(texturesCube);
         }            
 
         //Task 4: Create new cubes for different render modes
@@ -361,7 +361,7 @@
             const textureLoader = new THREE.TextureLoader();
             const materials = [
                 new THREE.MeshBasicMaterial({
-                    map: textureLoader.load("../dice-six/dice-six-faces-one.jpg")
+                    map: textureLoader.load("https://luffy180910.github.io/WebGL-CW/dice-six/dice-six-faces-one.jpg")
                 }),
                 new THREE.MeshBasicMaterial({
                     map: textureLoader.load('./dice-six/dice-six-faces-one.jpg')
@@ -386,7 +386,7 @@
         function createBunny() {
             var bunnyLoad = new THREE.OBJLoader();
             bunnyLoad.load(
-                'bunny-5000.obj',
+                'https://luffy180910.github.io/WebGL-CW/bunny-5000.obj',
                 function (object) {
                     object.scale.set(0.4, 0.4, 0.4);
                     object.position.x -= 0.5;
