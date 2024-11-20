@@ -199,7 +199,7 @@ $(function() {
       moveCloseIcon();
       $('.js-gallery img').attr('src','')
       for (var i=1;i<=4;i++) {
-        $('.js-gallery img').eq(i-1).attr('src','ui/assets/images/projects/' + currentSectionName + i + '.jpg')
+        $('.js-gallery img').eq(i-1).attr('src','http://narrowdesign.com/ui/assets/images/projects/' + currentSectionName + i + '.jpg')
       }
     }
   })

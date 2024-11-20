@@ -46,12 +46,12 @@
       winH = window.innerHeight;
       if (winW < 960) {
         smallScreen = true;
-        spirals = ['ui/assets/images/spiral-line-mobile.svg','ui/assets/images/spiral-line-black-mobile.svg','ui/assets/images/spiral-line-magenta-mobile.svg','ui/assets/images/spiral-line-cyan-mobile.svg',]
+        spirals = ['http://narrowdesign.com/ui/assets/images/spiral-line-mobile.svg','http://narrowdesign.com/ui/assets/images/spiral-line-black-mobile.svg','http://narrowdesign.co/ui/assets/images/spiral-line-magenta-mobile.svg','http://narrowdesign.com/ui/assets/images/spiral-line-cyan-mobile.svg',]
         spiralOriginX = Math.floor((winW/aspect) * aspect * (1 - axis))
         spiralOriginY = Math.floor((winW/aspect) * axis)
       } else {
         smallScreen = false;
-        spirals = ['ui/assets/images/spiral-line.svg','ui/assets/images/spiral-line-black.svg','ui/assets/images/spiral-line-magenta.svg','ui/assets/images/spiral-line-cyan.svg',]
+        spirals = ['http://narrowdesign.com/ui/assets/images/spiral-line.svg','http://narrowdesign.com/ui/assets/images/spiral-line-black.svg','http://narrowdesign.com/ui/assets/images/spiral-line-magenta.svg','http://narrowdesign.com/ui/assets/images/spiral-line-cyan.svg',]
         spiralOriginX = winW * axis
         spiralOriginY = winW * aspect * axis
       }
@@ -65,7 +65,7 @@
     }
   
     var spiralRed = new Image;
-    spiralRed.src = 'ui/assets/images/spiral-line.svg';
+    spiralRed.src = 'http://narrowdesign.com/ui/assets/images/spiral-line.svg';
     var count = 0;
     function drawMbp() {
       count++;
