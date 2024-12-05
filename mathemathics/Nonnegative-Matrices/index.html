@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<head>
+    <link rel="shortcut icon" href="../favicon.ico" />
+    <meta charset="utf-8">
+    <title> daily </title>
+    <meta http-equiv="content-language" content="en">
+    <style  type="text/css">
+        * {padding: 0; margin: 0;}
+        a{text-decoration: none;}
+        .wrap {
+            background: rgba(238, 238, 238, 0.8); 
+            width: 800px; 
+            text-align:start; 
+            padding: 40px 40px 10px; margin: 45px auto 0; overflow: hidden;
+            -moz-border-radius: 9px ;
+            border-radius: 9px ;
+            -o-box-shadow: 0 5px 5px #333333 ;
+            -webkit-box-shadow: 0 5px 5px #333333 ;
+            -moz-box-shadow: 0 5px 5px #333333 ;
+            box-shadow: 0 5px 5px #333333 ;
+
+        }
+        body{
+            background-image:url(../../genshin/琴.png),url(../../genshin/散兵.png);
+            background-position: right bottom,left bottom;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: 45% 45%,45% 45%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <h1>Nonnegative-Matrices</h1>
+    </div>
+    <div class="wrap">
+        <h2>1 Perron-Frobenius theory and matrix games 1</h2>
+        1.1 Irreducible nonnegative matrices 1<br>
+        1.2 Perron's Theorem on positive matrices 4<br>
+        1.3 Completely mixed games 7<br>
+        1.4 The Perron-Frobenius theorem 15<br>
+        1.5 Nonsingular M-matrices 24<br>
+        1.6 Polyhedral sets with least elements 30<br>
+        1.7 Reducible nonnegative matrices 34<br>
+        1.8 Primitive matrices 40<br>
+        1.9 Finite Markov chains 44<br>
+        1.10 Self maps of the Lorentz cone 51<br>
+        Exercises 54<br>
+        <h2>2 Doubly stochastic ...ati ices 59</h2>
+        2.1 The Birkhoff-von Neumann Theorem 59<br>
+        2.2 Fully indecomposable matrices 66<br>
+        2.3 Kbnig's Theorem and rank 69<br>
+        2.4 The optimal assignment problem 72<br>
+        2.5 A probabilistic algorithm 78<br>
+        2.6 Diagonal products 80<br>
+        2.7 A self map of doubly stochastic matrir.es 83<br>
+        2.8 van der Waerden conjecture and its solution 88<br>
+        2.9 Cooperative games with side payments 94<br>
+        2.10 Lexicographic center 98<br>
+        2.11 Open shop scheduling<br>
+    </div>
+    <div class="wrap">
+        <!-- 1.3. Completely mixed games <br>
+        The theory of games is concerned with problems of conflict. The simplest
+    form of such games are the so-called matrix games played as follows: Players
+    I and II secretly choose a column j and a row i, respectively, of a matrix
+    A — (aij), \ < i < m,\ < j < n. Their choices are revealed to a referee
+    who then calls Player II to pay Player I the amount aij. If a,; < 0, it is an
+    income to Player II from Player I. (We have slightly deviated from the standard
+    conventions of matrix games in which the rows are usually chosen by Player I.)
+    <br>
+    Example 1.1. Player I shows 1, 2, or 3 fingers, and simultaneously Player II
+    shows 1 or 2 fingers. The payoff to I from II is the total number of fingers shown
+    by both. The matrix of this game is
+    I's actions = 1/ 2/ 3/
+        2 3 4
+    II's actions = 2/ V 3 4 5
+    Obviously, if they play the game several times, Player I will show 3 fingers and
+    Player II will show 1 finger every time.
+    <br>
+    Example 1.2. The game is the same as above but the payoff to Player I is 1
+    if the total number of fingers shown is odd and -1 if the number is even. The
+    payoff matrix is
+    -1 1 -1
+    1 -] -->
+    <h2>1.3. Completely Mixed Games</h2>
+    <p>The theory of games is concerned with problems of conflict. The simplest form of such games are the so-called matrix games played as follows: Players I and II secretly choose a column j and a row i, respectively, of a matrix A — (a<sub>ij</sub>), where < i < m, < j < n. Their choices are revealed to a referee who then calls Player II to pay Player I the amount a<sub>ij</sub>. If a<sub>ij</sub> < 0, it is an income to Player II from Player I. (We have slightly deviated from the standard conventions of matrix games in which the rows are usually chosen by Player I.)</p>
+    <h3>Example 1.1</h3>
+    <p>Player I shows 1, 2, or 3 fingers, and simultaneously Player II shows 1 or 2 fingers. The payoff to I from II is the total number of fingers shown by both. The matrix of this game is:</p>
+    <table>
+        <tr>
+            <th>I's actions</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+        </tr>
+        <tr>
+            <td>II's actions = 1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+        </tr>
+        <tr>
+            <td>II's actions = 2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+        </tr>
+    </table>
+    <p>Obviously, if they play the game several times, Player I will show 3 fingers and Player II will show 1 finger every time.</p>
+    <h3>Example 1.2</h3>
+    <p>The game is the same as above but the payoff to Player I is 1 if the total number of fingers shown is odd and -1 if the number is even. The payoff matrix is:</p>
+    <table>
+        <tr>
+            <th>I's actions</th>
+            <th>1</th>
+            <th>2</th>
+            <th>3</th>
+        </tr>
+        <tr>
+            <td>II's actions = 1</td>
+            <td>-1</td>
+            <td>1</td>
+            <td>-1</td>
+        </tr>
+        <tr>
+            <td>II's actions = 2 </td>
+            <td> 1</td>
+            <td>-1</td>
+            <td>1</td>
+        </tr>
+    </table>
+
+    </div>  
+    <div class="wrap">
+    <h2>2.11. Open Shop Scheduling</h2>
+        <p>An interesting application of the Birkhoff-von Neumann Theorem can be made to the problem of open shop scheduling, due to Gonzales and Sahni (1976) [also see Gonzales (1979)]. For a related application see Brualdi (1988) and Brualdi and Csima (1992). A timetabling problem described in Bondy and Murty (1976) is also similar.</p>
+        <p>Consider the service department of an auto dealer. Cars often require several types of multiple repairs: (a) wheel alignment (b) exhaust pipe replacement, (c) engine tuneup, (d) fixing a bumper, and others. These tasks can be carried out in any order. However, alignment, tuneup, and body repair may have to be done in different departments, and this makes it impossible to carry out more than one task at a time on any car. The logistic problem of servicing these tasks in the given time with the available personnel leads to the following mathematical formulation of the problem.</p>
+        <p>Suppose a shop has <em>m</em> machines. Each machine performs different tasks. Let there be <em>n</em> jobs. (Think of them as cars to be serviced.) Each job requires certain time on each machine. Let <em>Uj</em> be the time needed on machine <em>i</em> for job <em>j</em>. A schedule for a processor (machine) is defined as a sequence {<em>lj</em>, <em>s</em><sub><em>j</em></sub>, <em>f</em><sub><em>j</em></sub>}. Here <em>lj</em> refers to the job index, <em>s</em><sub><em>j</em></sub> is the starting time of job <em>lj</em>, and <em>f</em><sub><em>j</em></sub> is the finishing time of job <em>lj</em>. Thus the tuples of this index are arranged in the order <em>s</em><sub><em>j</em></sub> < <em>f</em><sub><em>j</em></sub> < <em>s</em><sub><em>j+1</em></sub>. There may be more than one tuple per job. A schedule for an <em>m</em>-shop (i.e., a shop with <em>m</em> machines) is a set of <em>m</em> schedules, one for each machine. The finishing time of a schedule is defined as the latest completion time on the individual machines. This represents the time at which all jobs are completed. An optimal finishing time schedule is the one with the least finishing time among all schedules. A schedule is called preemptive if the machines can be used more than once on the same job at different time points for its completion.</p>
+        <p>The following hypothetical example illustrates the problem.</p>
+    </div>
+</body>
