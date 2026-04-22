@@ -6,24 +6,31 @@ https://luffy180910.github.io/
 
 ```text
 .
-├── pages/                      # archived top-level standalone pages
+├── pages/
 │   ├── home/index.html
+│   ├── blog/                  # blog pages
+│   ├── video/                 # video page
+│   ├── genshin/               # genshin page
+│   ├── algorithm/
+│   ├── mathematics/
 │   └── texas/index.html
 ├── assets/
+│   ├── blog/
+│   │   ├── images/
+│   │   └── videos/
+│   ├── video/                 # video media files
+│   ├── genshin/               # genshin image assets
+│   ├── css/
+│   ├── js/
 │   └── site/
 │       ├── base.css
 │       ├── generated-list-pages.css
-│       ├── media/              # site images/backgrounds/logo
-│       └── pages/              # extracted per-page css
-├── blog/
-│   └── assets/
-│       ├── images/
-│       └── videos/
-├── video/
-│   └── videos/
+│       ├── media/             # site images/backgrounds/logo
+│       └── pages/             # extracted per-page css
 ├── projects/
 │   └── webgl-coursework/
-├── content/index/              # generated metadata indexes
+├── content/
+│   └── index/                 # generated metadata indexes
 └── scripts/
 ```
 
