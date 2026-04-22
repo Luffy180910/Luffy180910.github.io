@@ -1,0 +1,22 @@
+* {padding: 0; margin: 0;}
+            body {
+				height: 100%; 
+				background: #FFF url("./log/background.jpg") repeat; 
+				color: #fff; 
+				font-size: 16px;}
+
+			
+			#chiikawa_background{
+				position: fixed;
+				bottom: 20px;
+				right: 20px;
+			}
+			a {color: #5daeff; outline:none; text-decoration:none;}
+			a:hover {text-decoration: underline;}
+			h1 {color: #39e83f; font-weight: 400;}
+			h2 {font-weight: 400; margin: 10px 0 40px;}
+			h3 {font-weight: normal; text-align: left; margin: 0 0 20px;}
+			.wrap {background: rgba(0, 0, 0, 0.4); width: 850px; height: 3450px; text-align: center; padding: 80px 40px 10px; margin: 45px auto 0; overflow: hidden;}
+			.logo {display: inline-block; margin: 0 0 40px;}
+			ul {text-align: left; line-height: 26px; padding: 0 0 0 15px;}
+			p {font-size: 30px; font-style: italic;  color: #5daeff; margin: 20px 0 0;}

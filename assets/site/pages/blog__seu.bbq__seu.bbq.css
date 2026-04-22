@@ -1,0 +1,15 @@
+* {padding: 0; margin: 0;}
+        a{text-decoration: none;}
+        /*
+        body{
+            background-image:url(../genshin/水神.png);
+            background-position: right center ;
+            background-attachment: fixed;
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: auto;
+            height: 1440px;}
+        */
+            .wrap {
+            background: rgba(149, 149, 149, 0.4); width: 690px; height: 15000px;
+            text-align:start; padding: 80px 40px 10px; margin: 45px auto 0; overflow: hidden;}

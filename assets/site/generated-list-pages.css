@@ -1,0 +1,22 @@
+.list-page {
+  min-height: 100vh;
+  padding: 40px 16px;
+}
+.list-page .wrap {
+  max-width: 1080px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 10px;
+  padding: 24px;
+}
+.list-page h1 { margin: 0 0 16px; }
+.blog-page { background: #f4f6fb; }
+.blog-page ul { margin: 0; padding-left: 20px; }
+.blog-page li { margin: 8px 0; }
+.blog-page a { color: #1651d1; text-decoration: none; }
+.blog-page a:hover { text-decoration: underline; }
+.video-page { background: #0f172a; color: #e5e7eb; }
+.video-page .wrap { background: rgba(2, 6, 23, 0.7); }
+.video-card { margin-bottom: 24px; }
+.video-card h2 { margin: 0 0 8px; font-size: 22px; }
+.video-card video { width: 100%; border-radius: 8px; background: #000; }
