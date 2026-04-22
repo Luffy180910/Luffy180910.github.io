@@ -4,7 +4,7 @@
             font-size: 35px;
         }
         body{
-            background-image:url(../genshin/万叶.png);
+            background-image:url(/assets/genshin/万叶.png);
             background-position:right ;
             background-attachment: fixed;
             background-size: contain;

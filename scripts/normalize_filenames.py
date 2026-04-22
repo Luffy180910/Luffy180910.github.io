@@ -7,7 +7,12 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
-TARGET_DIRS = [ROOT / "blog" / "assets", ROOT / "video" / "assets", ROOT / "genshin"]
+TARGET_DIRS = [
+    ROOT / "assets" / "blog" / "images",
+    ROOT / "assets" / "blog" / "videos",
+    ROOT / "assets" / "video",
+    ROOT / "assets" / "genshin",
+]
 ASSET_EXTS = {".jpg", ".jpeg", ".png", ".gif", ".mp4", ".webm", ".ico"}
 TEXT_EXTS = {".html", ".md", ".js", ".css", ".json", ".py"}
 
@@ -70,13 +75,15 @@ def build_replacements(mapping: dict[str, str]) -> dict[str, str]:
         old_name = Path(old_rel).name
         new_name = Path(new_rel).name
 
-        if old_rel.startswith("blog/assets/"):
-            replacements[f"./assets/{old_name}"] = f"./assets/{new_name}"
-        if old_rel.startswith("video/assets/"):
-            replacements[f"./assets/{old_name}"] = f"./assets/{new_name}"
-        if old_rel.startswith("genshin/"):
+        if old_rel.startswith("assets/blog/images/"):
+            replacements[f"/assets/blog/images/{old_name}"] = f"/assets/blog/images/{new_name}"
+        if old_rel.startswith("assets/blog/videos/"):
+            replacements[f"/assets/blog/videos/{old_name}"] = f"/assets/blog/videos/{new_name}"
+        if old_rel.startswith("assets/video/"):
+            replacements[f"/assets/video/{old_name}"] = f"/assets/video/{new_name}"
+        if old_rel.startswith("assets/genshin/"):
             replacements[f"./{old_name}"] = f"./{new_name}"
-            replacements[f"../genshin/{old_name}"] = f"../genshin/{new_name}"
+            replacements[f"/assets/genshin/{old_name}"] = f"/assets/genshin/{new_name}"
 
     return replacements
 

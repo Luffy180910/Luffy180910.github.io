@@ -1,50 +1,50 @@
 [
   {
     "title": "Tower of Hanoi Solver",
-    "href": "./Hanoi/index.html"
+    "href": "/pages/blog/Hanoi/index.html"
   },
   {
     "title": "数独游戏",
-    "href": "./Sudoku/index.html"
+    "href": "/pages/blog/Sudoku/index.html"
   },
   {
     "title": "划水吐槽日记",
-    "href": "./daily.html"
+    "href": "/pages/blog/daily.html"
   },
   {
     "title": "纪念罗伯特 W 弗洛伊德",
-    "href": "./floyd/floyd.html"
+    "href": "/pages/blog/floyd/floyd.html"
   },
   {
     "title": "--> Luffy danbulao",
-    "href": "./golden-ratio/index.html"
+    "href": "/pages/blog/golden-ratio/index.html"
   },
   {
     "title": "SVG Spiral Overlay",
-    "href": "./golden-ratio/test.html"
+    "href": "/pages/blog/golden-ratio/test.html"
   },
   {
     "title": "radix",
-    "href": "./radix/radix.html"
+    "href": "/pages/blog/radix/radix.html"
   },
   {
     "title": "seu love story",
-    "href": "./seu.bbq/seu.bbq.html"
+    "href": "/pages/blog/seu.bbq/seu.bbq.html"
   },
   {
     "title": "daily",
-    "href": "./simpsons-paradox/simpsons-paradox.html"
+    "href": "/pages/blog/simpsons-paradox/simpsons-paradox.html"
   },
   {
     "title": "From what-cs-majors-should-know",
-    "href": "./what-cs-majors-should-know.html"
+    "href": "/pages/blog/what-cs-majors-should-know.html"
   },
   {
     "title": "春游梅花山",
-    "href": "./春游梅花山/春游梅花山.html"
+    "href": "/pages/blog/春游梅花山/春游梅花山.html"
   },
   {
     "title": "滕王阁序",
-    "href": "./滕王阁序.html"
+    "href": "/pages/blog/滕王阁序.html"
   }
 ]

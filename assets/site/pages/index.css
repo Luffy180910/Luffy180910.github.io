@@ -1,7 +1,7 @@
 * {padding: 0; margin: 0;}
             body {
 				height: 100%; 
-				background: #FFF url("./log/background.jpg") repeat; 
+				background: #FFF url("/assets/site/media/background.jpg") repeat; 
 				color: #fff; 
 				font-size: 16px;}
 

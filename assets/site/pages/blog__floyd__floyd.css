@@ -3,7 +3,7 @@
         /*
         含泪去掉原神
         body{
-            background-image:url(../genshin/水神.png);
+            background-image:url(/assets/genshin/水神.png);
             background-position:right ;
             background-attachment: fixed;
             background-size: contain;

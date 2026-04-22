@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>刘烨 – 德州之神 · 真实战绩</title>
+  
+    <link rel="stylesheet" href="/assets/site/base.css">
+    <link rel="stylesheet" href="/assets/site/pages/texas.css">
+</head>
+<body>
+<div class="container">
+  <!-- 头部 -->
+  <div class="header">
+    <div class="logo">♠️ GLOBAL POKER INDEX</div>
+    <div class="search">🔍 Name, Venue, Festival, etc.</div>
+    <div class="calculator">
+      <span>$</span><input type="text" placeholder="Buy-in" value="1000">
+      <span>+</span><input type="text" placeholder="Fee" value="100">
+      <span>Entries</span><input type="text" value="100">
+      <span>Place</span><input type="text" value="1">
+      <button style="background:#f0b90b; border:none; padding:5px 10px; border-radius:5px;">Calculate</button>
+    </div>
+  </div>
+
+  <!-- 个人信息 + 图表 -->
+  <div class="profile">
+    <div class="left">
+      <div class="avatar-section">
+        <div class="avatar">🎭</div>
+        <div class="info">
+          <h2>刘烨</h2>
+          <div class="title">德州之神 · The God of Texas</div>
+          <div style="display: flex; gap: 15px; margin-top: 5px;">
+            <span>🏆 Team</span> <span>📘 Facebook</span> <span>🐦 Twitter</span>
+          </div>
+        </div>
+      </div>
+      <div class="nationality">🇨🇳 China · Beijing, China</div>
+      <div class="stats-grid">
+        <div class="stat-item"><span class="stat-label">GPI 世界排名</span><div class="stat-value">#1</div></div>
+        <div class="stat-item"><span class="stat-label">中国排名</span><div class="stat-value">#1</div></div>
+        <div class="stat-item"><span class="stat-label">总积分</span><div class="stat-value">2,847 pts</div></div>
+        <div class="stat-item"><span class="stat-label">最佳现金</span><div class="stat-value">$882,328</div></div>
+        <div class="stat-item"><span class="stat-label">生涯奖金</span><div class="stat-value">$4,492,439</div></div>
+      </div>
+    </div>
+
+    <div class="right">
+      <div style="display: flex; justify-content: space-between;">
+        <h3>RANKING HISTORY</h3>
+        <div class="legend"><span class="blue">GPI</span> <span class="red">POY 2026</span></div>
+      </div>
+      <div class="chart-placeholder">
+        <!-- 模拟折线图：可用 Canvas 绘制真实曲线，此处简化为占位 -->
+        <div style="width:90%; height:150px; background: #2a3a4a; position:relative;">
+          <svg width="100%" height="100%" viewBox="0 0 300 100" preserveAspectRatio="none">
+            <polyline points="0,80 30,60 70,30 120,45 180,20 240,35 300,15" stroke="#3498db" stroke-width="2" fill="none" />
+            <polyline points="0,70 30,65 70,50 120,60 180,40 240,55 300,30" stroke="#e74c3c" stroke-width="2" fill="none" />
+          </svg>
+        </div>
+      </div>
+      <div style="display: flex; gap: 20px; justify-content: space-around;">
+        <div>🏆 #12 for 2 weeks</div><div>📊 #124</div><div>💯 #33</div><div>💰 #91</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 比赛结果表格（真实数据） -->
+  <div class="tournament-table">
+    <h3>🏆 刘烨的比赛结果 (2025-2026)</h3>
+    <div class="table-header">
+      <span>日期</span>
+      <span>赛事</span>
+      <span>买入</span>
+      <span>名次</span>
+      <span>奖金</span>
+    </div>
+
+    <div id="results-container">
+      <!-- 由 JavaScript 动态生成表格行，确保数据完整 -->
+    </div>
+  </div>
+
+
+</div>
+
+<script>
+  // 将你提供的原始数据以字符串形式嵌入（经过整理，保留关键字段）
+  const rawData = `Asian Poker Tour - APT Jeju Classic 2026Jeju, South Korea 
+Pot Limit Omaha Hi Lo - 5 Card (Event #97)
+Feb 8, 2026 Landing Casino	₩700,000	5th	42	₩2,180,000	42.82 pts	42.82 pts
+No Limit Hold'em - High Roller (Event #52)
+Feb 4 - 5, 2026 Landing Casino	₩5,000,000	1st	174	₩174,770,000	337.42 pts	337.42 pts
+King Poker Cup SeriesJeju, South Korea 
+No Limit Hold'em - King's Debut Opener
+Jan 11, 2026 Landing Casino	$4,700 + 300	7th	362	$52,700	248.80 pts	248.80 pts
+K Poker CupJeju, South Korea 
+No Limit Hold'em - Fun Game - Flip Out
+Jan 6, 2026 Landing Casino	₩200,000	4th	304	₩3,560,000	68.08 pts	68.08 pts
+World Series of Poker - WSOP Paradise 2025Paradise Island, Bahamas 
++ 1,000 No Limit Hold'em - The Closer Turbo Bounty (Bracelet Event #15)
+Dec 16 - 17, 2025 Atlantis Resort & Casino	$1,500 + 250	74th	509	$3,200	93.29 pts	—
+No Limit Hold'em - Daily Deepstack Turbo
+Dec 13, 2025 Atlantis Resort & Casino	$2,000 + 200	20th	213	$5,000	113.77 pts	—
++1,250 No Limit Hold'em - WSOP Super Circuit Mystery Bounty (Bracelet Event #1)
+Dec 4, 2025 Atlantis Resort & Casino	$1,250 + 250	144th	2,396	$3,300	114.01 pts	—
+World Poker Tour - WPT Seminole Hard Rock Rock 'n' Roll Poker Open (RRPO)Hollywood, FL, United States 
+Pot Limit Omaha - Deep Stack (Event #47)
+Dec 1, 2025 Seminole Hard Rock Hotel & Casino	$3,000	4th	62	$15,350	141.04 pts	—
+No Limit Hold'em - WPT Championship (Event #32)
+Nov 28 - Dec 3, 2025 Seminole Hard Rock Hotel & Casino	$3,500	29th	1,224	$23,200	210.46 pts	—
+Jeju Poker Festival ft. RDPT, WPT Prime Korea, & K Poker CupJeju, South Korea 
+No Limit Hold'em - Red Dragon Prestige High Roller
+Nov 11 - 12, 2025 Landing Casino	₩5,460,000 + 540,000	32nd	232	₩12,900,000	123.28 pts	—
+No Limit Hold'em - Hyper Turbo High Roller
+Nov 7, 2025 Landing Casino	₩1,800,000 + 200,000	1st	71	₩36,188,000	185.20 pts	—
+Big O (5 Cards Pot Limit Omaha - HI/LO)
+Nov 6, 2025 Landing Casino	₩688,000 + 112,000	1st	37	₩8,748,000	82.91 pts	—
+No Limit Hold'em - Baby Dragon
+Nov 6 - 8, 2025 Landing Casino	₩1,350,000 + 150,000	80th	794	₩3,190,000	82.18 pts	—
+Pot Limit Omaha
+Nov 1, 2025 Landing Casino	₩688,000 + 112,000	1st	10	₩3,965,000	—	—
+WSOP International Circuit - WSOPC CyprusKyrenia, Cyprus 
+No Limit Hold'em - Hyper Turbo
+Oct 17, 2025 Merit Royal Hotel & Casino	$2,200	2nd	61	$29,300	162.37 pts	—
+No Limit Hold'em - Hyper Turbo
+Oct 14, 2025 Merit Royal Hotel & Casino	$1,100	9th	109	$2,572	89.72 pts	—
++ 1,000 No Limit Hold'em - Mystery Bounty (Event #5)
+Oct 13 - 15, 2025 Merit Royal Hotel & Casino	$2,300	119th	701	$4,000	98.91 pts	—
+No Limit Hold'em - Mini Main Event (Event #3)
+Oct 11 - 14, 2025 Merit Royal Hotel & Casino	$2,200	82nd	1,257	$4,700	127.55 pts	—
+No Limit Hold'em - Opener (Event #1)
+Oct 9 - 10, 2025 Merit Royal Hotel & Casino	$1,650	60th	319	$3,000	86.05 pts	—
+World Series of Poker Europe - WSOPE 2025Rozvadov, Czech Republic 
+No Limit Hold'em - Closer (Bracelet Event #15)
+Oct 4 - 9, 2025 Kings Casino	€1,000	58th	645	€3,275	90.15 pts	—
+Pot Limit Omaha (Bracelet Event #8)
+Sep 27 - 29, 2025 Kings Casino	€5,000	1st	200	€213,600	403.70 pts	—
+Pot Limit Omaha - 8-Max (Bracelet Event #3)
+Sep 18 - 23, 2025 Kings Casino	€1,000	26th	811	€4,640	128.40 pts	—
++ 500 No Limit Hold'em - Bounty Hunter Opener (Bracelet Event #1)
+Sep 17 - 19, 2025 Kings Casino	€700	27th	525	€1,635	89.69 pts	—
+Triton Poker Super High Roller Series Jeju II by WPT GlobalJeju, South Korea 
+No Limit Hold'em - Triton 8-Handed (Event #2)
+Sep 10 - 11, 2025 Landing Casino	$30,000 + 1,800	2nd	183	$882,328	406.55 pts	—
+Triton One JejuJeju, South Korea 
+No Limit Hold'em - Triton One NLHE 8-Handed (Event #13)
+Sep 6, 2025 Landing Casino	$1,840 + 160	19th	132	$3,200	98.10 pts	—
++ 4,500 No Limit Hold'em - Triton One Mystery Bounty 8-Handed (Event #5)
+Sep 4 - 5, 2025 Landing Casino	$4,332 + 1,168	25th	273	$10,400	148.37 pts	—
+Asian Poker Tour - APT IncheonIncheon, South Korea 
+No Limit Hold'em - APT High Roller (Event #83)
+Aug 9 - 10, 2025 Paradise City Incheon	₩5,000,000	18th	245	₩12,330,000	106.81 pts	—
+No Limit Triple Draw Mix - Hyper Turbo (Event #39)
+Aug 4, 2025 Paradise City Incheon	₩400,000	5th	31	₩940,000	—	—
+Pot Limit Omaha Hi/Low - Masters (Event #30)
+Aug 4, 2025 Paradise City Incheon	₩1,500,000	5th	42	₩4,900,000	60.00 pts	—
+Pot Limit Omaha - Masters (Event #20)
+Aug 3, 2025 Paradise City Incheon	₩1,500,000	1st	48	₩19,598,000	108.01 pts	—
+Pot Limit Omaha - High Roller (Event #11)
+Aug 2, 2025 Paradise City Incheon	₩3,000,000	2nd	21	₩18,102,000	—	—
+Pot Limit Omaha - Turbo (Event #4)
+Aug 1, 2025 Paradise City Incheon	₩500,000	1st	29	₩4,400,464	—	—
+56th World Series of Poker - WSOP 2025Las Vegas, NV, United States 
+No Limit Hold'em - The Closer (Bracelet Event #97)
+Jul 14 - 16, 2025 Bally's Casino	$1,500	305th	4,297	$3,710	70.40 pts	—
+Pot Limit Omaha - 6-Handed (Bracelet Event #91)
+Jul 10 - 12, 2025 Bally's Casino	$1,500	21st	1,384	$12,730	139.93 pts	—
+No Limit Hold'em - Lucky 7's 7-Handed (Bracelet Event #90)
+Jul 10 - 14, 2025 Bally's Casino	$777	554th	8,012	$1,893	43.80 pts	—
++ 300 Pot Limit Omaha - Mystery Bounty (Bracelet Event #86)
+Jul 8 - 11, 2025 Bally's Casino	$700	229th	5,284	$2,210	51.07 pts	—
+The Wynn Summer ClassicLas Vegas, NV, United States 
+No Limit Hold'em - Turbo
+Jul 2, 2025 Wynn Las Vegas	$1,100	38th	304	$2,212	59.75 pts	—
+56th World Series of Poker - WSOP 2025Las Vegas, NV, United States 
++ 3,000 No Limit Hold'em - Super Turbo Bounty (Bracelet Event #72)
+Jun 27, 2025 Bally's Casino	$7,000	84th	809	$13,581	113.52 pts	—
+No Limit Hold'em (Bracelet Event #68)
+Jun 25 - 28, 2025 Bally's Casino	$3,000	226th	2,338	$6,310	93.21 pts	—
+No Limit Hold'em - 6-Handed (Bracelet Event #62)
+Jun 23 - 26, 2025 Bally's Casino	$5,000	9th	1,168	$83,095	255.45 pts	—
+The Wynn Summer ClassicLas Vegas, NV, United States 
+No Limit Hold'em - Turbo
+Jun 21, 2025 Wynn Las Vegas	$1,100	5th	189	$11,213	99.89 pts	—
+56th World Series of Poker - WSOP 2025Las Vegas, NV, United States 
+No Limit Hold'em - Freezeout (Bracelet Event #52)
+Jun 17, 2025 Bally's Casino	$1,500	229th	2,320	$3,173	73.14 pts	—
+World Series of Poker - WSOP Online at WSOP.com (MI/NJ/NV/PA)Online, International
+No Limit Hold'em - 6-Max (ONLINE Event #10)
+Jun 15, 2025 WSOP.com	$1,000	134th	 	$1,694	—	—
+Venetian DeepStack Championship Poker SeriesLas Vegas, NV, United States 
++ 500 Pot Limit Big O Monster Bounty (Event #46)
+Jun 15, 2025 The Venetian Resort Hotel Casino	$1,100	24th	185	$2,575	59.17 pts	—
+World Series of Poker - WSOP Online at WSOP.com (MI/NJ/NV/PA)Online, International
+Pot Limit Omaha - PLOSSUS PKO 6-Max (ONLINE Event #9)
+Jun 14, 2025 WSOP.com	$400	247th	 	$414	—	—
+56th World Series of Poker - WSOP 2025Las Vegas, NV, United States 
+Pot Limit Omaha 8 or Better 8-Handed (Bracelet Event #36)
+Jun 10 - 13, 2025 Bally's Casino	$10,000	49th	386	$20,262	116.12 pts	—
+No Limit Hold'em - Deepstack - 8-Handed (Bracelet Event #31)
+Jun 9 - 10, 2025 Bally's Casino	$800	528th	4,481	$1,647	45.08 pts	—
+Pot Limit Omaha Double Board Bomb Pot - 8-Handed (Bracelet Event #24)
+Jun 6 - 8, 2025 Bally's Casino	$1,500	162nd	1,452	$3,027	70.64 pts	—
+Pot Limit Omaha Hi-Lo 8 or Better - 8-Handed (Bracelet Event #21)
+Jun 4 - 6, 2025 Bally's Casino	$1,500	38th	1,176	$6,773	106.48 pts	—
+World Series of Poker - WSOP Online at WSOP.com (MI/NJ/NV/PA)Online, International
+No Limit Hold'em - Mystery Bounty (ONLINE Event #2)
+Jun 1, 2025 WSOP.com	$555	267th	 	$853	—	—
+56th World Series of Poker - WSOP 2025Las Vegas, NV, United States 
+No Limit Hold'em - 8-Handed (Bracelet Event #3)
+May 28 - 31, 2025 Bally's Casino	$5,000	4th	693	$191,550	279.34 pts	—
++ 300 No Limit Hold'em - Mystery Millions (Bracelet Event #1)
+May 27 - Jun 2, 2025 Bally's Casino	$700	839th	19,654	$2,130	37.87 pts	—
+The Lord Poker Tournament - TLPT JejuJeju, South Korea 
+No Limit Hold'em - TLPT Super High Roller Series AA Poker (Event #12)
+May 20, 2025 Landing Casino	$25,000	4th	15	$35,000	—	—
+No Limit Hold'em - TLPT Circuit Main Event (Event #2)
+May 13 - 16, 2025 Landing Casino	$500	27th	505	$6,900	43.53 pts	—
+Asia Pacific Poker Tour - APPT CambodiaPhnom Penh, Cambodia 
+No Limit Hold'em - High Roller Hyper Turbo (Event #56)
+May 10, 2025 NagaWorld Integrated Resort	$2,000	2nd	16	$3,383	—	—
+No Limit Hold'em - 20/15/10 (Event #51)
+May 10, 2025 NagaWorld Integrated Resort	$270	2nd	64	$3,196	37.42 pts	—
+No Limit Hold'em - APPT Main Event (Event #40)
+May 8 - 13, 2025 NagaWorld Integrated Resort	$1,750	44th	643	$3,572	86.92 pts	—
+No Limit Hold'em - APPT Super High Roller (Event #31)
+May 7 - 8, 2025 NagaWorld Integrated Resort	$10,000	2nd	7	$23,052	—	—
+No Limit Hold'em - APPT National (Event #19)
+May 5 - 8, 2025 NagaWorld Integrated Resort	$1,000	40th	309	$1,597	56.42 pts	—
+No Limit Hold'em - Warm-Up High Roller (Event #2)
+May 2, 2025 NagaWorld Integrated Resort	$1,500	2nd	14	$5,622	—	—
+Korea Poker Cup Series 2025Jeju, South Korea 
+No Limit Hold'em - High Roller
+Apr 12 - 13, 2025 Landing Casino	₩6,000,000	7th	109	₩20,300,000	116.21 pts	—
+Pot Limit Omaha - PLO High
+Apr 8, 2025 Landing Casino	₩600,000	1st	36	₩6,707,000	40.83 pts	—
+No Limit Hold'em - Main Event
+Apr 8 - 13, 2025 Landing Casino	₩1,240,000	72nd	1,228	₩3,570,000	65.23 pts	—
+No Limit Hold'em - Fun Game - Win The Button
+Apr 7, 2025 Landing Casino	₩300,000	1st	28	₩2,754,000	—	—
+No Limit Hold'em - Single Day High Roller
+Apr 7, 2025 Landing Casino	₩2,500,000	12th	79	₩5,000,000	68.69 pts	—
+MPT Macau Poker Open 2025Cotai, Macau 
+No Limit Hold'em - MPT Macau Poker Open Main Event
+Mar 20 - 23, 2025 MGM COTAI	HK$7,505 + 1,375	28th	1,293	HK$43,320	109.44 pts	—
+Triton Poker Super High Roller Series JejuJeju, South Korea 
+No Limit Hold'em - 8 Handed (Event #5)
+Mar 1, 2025 Landing Casino	$30,000	3rd	252	$737,000	296.20 pts	—
+No Limit Hold'em - 8 Handed (Event #2)
+Feb 27 - 28, 2025 Landing Casino	$20,000	16th	348	$76,000	182.54 pts	—
+Poker Dream 16 - JejuJeju, South Korea 
+Pot Limit Omaha - Turbo (Event #43)
+Feb 24, 2025 Landing Casino	₩500,000	1st	21	₩3,850,000	—	—
+No Limit Hold'em - Superstack (Event #31)
+Feb 22 - 23, 2025 Landing Casino	₩1,200,000	24th	203	₩2,010,000	54.15 pts	—
+Pot Limit Omaha - Hi-Lo - 5 Card (Big O) - Turbo (Event #25)
+Feb 20, 2025 Landing Casino	₩500,000	3rd	25	₩1,770,000	—	—
+No Limit Hold'em - Super High Roller (Event #24)
+Feb 20 - 22, 2025 Landing Casino	₩14,500,000	2nd	123	₩276,500,000	124.11 pts	—
++ 1,700,000 No Limit Hold'em - Mystery Bounty High Roller (Event #17)
+Feb 19, 2025 Landing Casino	₩4,300,000	21st	159	₩6,700,000	45.55 pts	—
+No Limit Hold'em - Main Event (Event #3)
+Feb 15 - 21, 2025 Landing Casino	₩1,600,000	72nd	1,384	₩4,720,000	41.99 pts	—
++ 240,000 No Limit Hold'em - Mystery Bounty (Event #1)
+Feb 15 - 17, 2025 Landing Casino	₩570,000	3rd	494	₩18,550,000	35.03 pts	—`;
+
+  // 解析函数：将原始文本转换为行数据
+  function parseRawData(text) {
+    const lines = text.split('\n').filter(l => l.trim() !== '');
+    const results = [];
+    let currentSeries = null;
+    let currentEvent = null;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i].trim();
+
+      // 检测系列赛行（通常包含地点和国家，且后面几行是具体比赛）
+      if (line.match(/[A-Za-z\s\-]+\d*[A-Za-z\s,]+(South Korea|Bahamas|United States|Cyprus|Czech Republic|Cambodia|Macau|Online)/)) {
+        currentSeries = line.replace(/\s+/g, ' ').trim();
+        continue;
+      }
+
+      // 检测具体赛事行（通常以No Limit Hold'em / Pot Limit Omaha等开头）
+      if (line.match(/^(No Limit|Pot Limit|Big O|\+ \d|Mixed|NLH|PLO)/i) && !line.match(/^\d/)) {
+        currentEvent = line.replace(/\s+/g, ' ').trim();
+        continue;
+      }
+
+      // 检测数据行（包含日期和买入）
+      if (line.match(/^(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s\d{1,2},?\s\d{4}/)) {
+        // 提取数据字段
+        const parts = line.split('\t');
+        if (parts.length >= 5) {
+          const datePart = parts[0].trim();
+          // 提取日期（只取第一个日期，忽略范围）
+          const dateMatch = datePart.match(/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+(\d{1,2})/);
+          let dateStr = '';
+          if (dateMatch) {
+            const month = dateMatch[1];
+            const day = dateMatch[2].padStart(2, '0');
+            // 从 datePart 中提取年份
+            const yearMatch = datePart.match(/\d{4}/);
+            const year = yearMatch ? yearMatch[0] : '2025';
+            dateStr = `${month} ${day}, ${year}`;
+          } else {
+            dateStr = datePart; // fallback
+          }
+
+          const buyinRaw = parts[1].trim();
+          // 移除 + 额外部分，只取基础买入
+          let buyin = buyinRaw.split('+')[0].trim();
+          // 如果包含空格（如 "$4,700 + 300"），取第一部分
+          if (buyin.includes(' ')) buyin = buyin.split(' ')[0];
+
+          const placeRaw = parts[2].trim();
+          const place = placeRaw.replace(/(st|nd|rd|th)/g, ''); // 移除序数后缀
+
+          const prizeRaw = parts[4] ? parts[4].trim() : '';
+          let prize = prizeRaw;
+          // 如果奖金包含多段，取第一段
+          if (prize.includes(' ')) prize = prize.split(' ')[0];
+
+          // 构造赛事名称：系列赛 + 具体赛事（简化）
+          let eventName = '';
+          if (currentSeries && currentEvent) {
+            // 提取系列赛的核心名称，例如 "Asian Poker Tour - APT Jeju Classic 2026" -> "APT Jeju Classic"
+            let seriesCore = currentSeries.replace(/\d{4}/, '').replace(/[-,]/g, ' ').replace(/\s+/g, ' ').trim();
+            // 移除常见后缀
+            seriesCore = seriesCore.replace(/(South Korea|Bahamas|United States|Cyprus|Czech Republic|Cambodia|Macau|Online)$/i, '').trim();
+            // 取前几个词
+            const words = seriesCore.split(' ');
+            if (words.length > 4) seriesCore = words.slice(0,4).join(' ');
+            eventName = seriesCore + ' · ' + currentEvent;
+          } else {
+            eventName = currentEvent || 'Unknown Event';
+          }
+
+          results.push({
+            date: dateStr,
+            event: eventName,
+            buyin: buyin,
+            place: place,
+            prize: prize
+          });
+        }
+      }
+    }
+    return results;
+  }
+
+  const rows = parseRawData(rawData);
+
+  // 渲染到表格
+  const container = document.getElementById('results-container');
+  rows.forEach(r => {
+    const rowDiv = document.createElement('div');
+    rowDiv.className = 'table-row';
+    rowDiv.innerHTML = `
+      <span>${r.date}</span>
+      <span>${r.event}</span>
+      <span>${r.buyin}</span>
+      <span>${r.place}</span>
+      <span>${r.prize}</span>
+    `;
+    container.appendChild(rowDiv);
+  });
+
+  // 如果解析结果很少，显示提示（但应该很多）
+  if (rows.length === 0) {
+    container.innerHTML = '<div style="padding:20px; text-align:center;">未能解析数据，请检查原始格式</div>';
+  } else {
+    console.log(`成功解析 ${rows.length} 条记录`);
+  }
+</script>
+</body>
+</html>

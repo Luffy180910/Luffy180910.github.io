@@ -8,8 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 CONTENT_DIR = ROOT / "content" / "index"
-BLOG_DIR = ROOT / "blog"
-VIDEO_ASSETS_DIR = ROOT / "video" / "assets"
+BLOG_DIR = ROOT / "pages" / "blog"
+VIDEO_ASSETS_DIR = ROOT / "assets" / "video"
 
 
 TITLE_RE = re.compile(r"<title>(.*?)</title>", re.IGNORECASE | re.DOTALL)
@@ -45,7 +45,7 @@ def collect_blog_items() -> list[dict[str, str]]:
             continue
         html = path.read_text(encoding="utf-8")
         title = extract_title(html, path.stem)
-        items.append({"title": title, "href": f"./{rel}"})
+        items.append({"title": title, "href": f"/pages/blog/{rel}"})
     return items
 
 
@@ -54,8 +54,8 @@ def collect_video_items() -> list[dict[str, str]]:
     if not VIDEO_ASSETS_DIR.exists():
         return items
     for path in sorted(VIDEO_ASSETS_DIR.glob("*.mp4")):
-        rel = path.relative_to(ROOT / "video").as_posix()
-        items.append({"title": humanize_filename(path.stem), "src": f"./{rel}"})
+        rel = path.relative_to(ROOT).as_posix()
+        items.append({"title": humanize_filename(path.stem), "src": f"/{rel}"})
     return items
 
 
@@ -78,9 +78,9 @@ def render_blog_index(items: list[dict[str, str]]) -> str:
     <meta charset="utf-8">
     <title>my blog</title>
     <meta http-equiv="content-language" content="en">
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../assets/site/base.css">
-    <link rel="stylesheet" href="../assets/site/generated-list-pages.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/site/base.css">
+    <link rel="stylesheet" href="/assets/site/generated-list-pages.css">
 </head>
 <body class="list-page blog-page">
     <div class="wrap">
@@ -109,9 +109,9 @@ def render_video_index(items: list[dict[str, str]]) -> str:
 <head>
     <meta charset="utf-8">
     <title>video</title>
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../assets/site/base.css">
-    <link rel="stylesheet" href="../assets/site/generated-list-pages.css">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/site/base.css">
+    <link rel="stylesheet" href="/assets/site/generated-list-pages.css">
 </head>
 <body class="list-page video-page">
     <div class="wrap">
@@ -163,7 +163,9 @@ def main() -> None:
     ensure_generated_css()
 
     (BLOG_DIR / "index.html").write_text(render_blog_index(blog_items), encoding="utf-8")
-    (ROOT / "video" / "index.html").write_text(render_video_index(video_items), encoding="utf-8")
+    (ROOT / "pages" / "video" / "index.html").write_text(
+        render_video_index(video_items), encoding="utf-8"
+    )
     print(f"Generated blog index ({len(blog_items)} items) and video index ({len(video_items)} items).")
 
 

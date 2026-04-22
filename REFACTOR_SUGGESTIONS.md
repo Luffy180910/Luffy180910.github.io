@@ -11,33 +11,47 @@
 
 ```text
 .
-├── index.html
+├── index.html (redirect)
+├── texas.html (redirect)
+├── pages/
+│   ├── home/index.html
+│   └── texas/index.html
 ├── assets/
-│   ├── site/           # 站点通用资源（logo、背景、图标）
-│   ├── blog/           # 博客图片/视频等
-│   └── video/          # 视频专区媒体
+│   └── site/
+│       ├── media/      # 站点通用资源（logo、背景、图标）
+│       └── pages/      # 页面样式
 ├── blog/               # 博客页面
+│   └── assets/
+│       ├── images/
+│       └── videos/
 ├── algorithm/          # 算法相关页面/素材
 ├── mathematics/        # 数学页面（统一拼写）
-├── genshin/            # 独立主题页面
-├── WebGL-CW/           # 课程项目
-└── video/              # 视频页面
+├── genshin/
+│   └── assets/
+├── projects/
+│   └── webgl-coursework/
+└── video/
+    └── videos/
 ```
 
 ## 已完成重构（本次）
 
 1. `mathemathics/` 重命名为 `mathematics/`。
-2. `blog/src/` 重命名为 `blog/assets/`，并修复 `blog/daily.html` 中相关引用。
-3. `video/src/` 重命名为 `video/assets/`，并修复 `video/index.html` 中相关引用。
-4. 修复主页中的数学链接：`./mathematics/index.html`。
+2. `blog/src/` 重命名为 `blog/assets/`，后续再拆分为 `blog/assets/images` + `blog/assets/videos`。
+3. `video/src/` 重命名后进一步整理为 `video/videos/`，并修复 `video/index.html` 中相关引用。
+4. `genshin` 资源收拢到 `genshin/assets/` 并修复页面引用。
 5. 删除仓库中的 `.DS_Store`，并在 `.gitignore` 中加入忽略规则。
-6. 处理 `video/assets/ 云中探花手.mp4` 的前导空格命名问题。
+6. 处理 `video/assets/ 云中探花手.mp4` 的前导空格命名问题，并统一为 `video/videos/yunzhong-tanhuashou.mp4`。
+7. `algorithm/boid-model/test.py/` 调整为 `algorithm/boid-model/scripts/`。
+8. `WebGL-CW/` 迁移到 `projects/webgl-coursework/`。
+9. `log/` 迁移到 `assets/site/media/`。
+10. `index.html` 与 `texas.html` 归档到 `pages/`，根目录保留跳转页。
 
 ## 下一步建议（可分阶段）
 
-1. 将页面中的内联 CSS 提取到公共样式文件（如 `assets/site/base.css`）。
-2. 统一文件命名规范为 `kebab-case`（避免空格、括号和混合命名）。
-3. 建立内容索引（文章/视频元数据）并由脚本生成列表页，减少手工维护。
+1. 将更多页面继续组件化（header/footer/nav），减少重复 HTML。
+2. 将大体积媒体迁移到对象存储 + CDN（仓库仅保留必要缩略图和页面源码）。
+3. 引入轻后端（Serverless + 数据库）实现评论、统计、搜索等动态能力。
 4. 将大体积媒体迁移到对象存储 + CDN（仓库仅保留必要缩略图和页面源码）。
 5. 引入轻后端（Serverless + 数据库）实现评论、统计、搜索等动态能力。
 

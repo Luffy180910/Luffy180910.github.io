@@ -2,7 +2,7 @@
         a{text-decoration: none;}
         /*
         body{
-            background-image:url(../genshin/水神.png);
+            background-image:url(/assets/genshin/水神.png);
             background-position: right center ;
             background-attachment: fixed;
             background-size: contain;
@@ -11,7 +11,7 @@
             height: 1440px;}
         */
         body{
-                background-image:url(../genshin/琴.png),url(../genshin/散兵.png);
+                background-image:url(/assets/genshin/琴.png),url(/assets/genshin/散兵.png);
                 background-position: right bottom,left bottom;
                 background-attachment: fixed;
                 background-repeat: no-repeat;
