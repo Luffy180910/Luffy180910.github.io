@@ -69,15 +69,15 @@ def write_json(name: str, payload: list[dict[str, str]]) -> None:
 
 def render_blog_index(items: list[dict[str, str]]) -> str:
     lines = "\n".join(
-        f'        <li><a href="{item["href"]}" target="_blank">{item["title"]}</a></li>'
+        f'        <li><a href="{item["href"]}" target="_blank" rel="noopener noreferrer">{item["title"]}</a></li>'
         for item in items
     )
     return f"""<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>my blog</title>
-    <meta http-equiv="content-language" content="en">
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/assets/site/base.css">
     <link rel="stylesheet" href="/assets/site/generated-list-pages.css">
@@ -105,9 +105,10 @@ def render_video_index(items: list[dict[str, str]]) -> str:
         for item in items
     )
     return f"""<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>video</title>
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/assets/site/base.css">
