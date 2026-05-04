@@ -1,127 +1,114 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport">
-    <title>Tower of Hanoi</title>
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <script>
-        let Tower = [[], [], []];
-        let TempTower=[[],[],[]];
-        var n=5;
-        function move(m, a, b, c) {
-            if (m === 1) {
-                headmove(a, c);
-                draw(n);
-                document.getElementById("print").innerHTML += "<li>--------------------------------------------------------------------------</li><br>";
-                
-                return;
-            }
-            move(m - 1, a, c, b);
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi · Luffy's Space</title>
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/assets/site/base.css">
+    <link rel="stylesheet" href="/assets/site/pages/blog__Hanoi__index.css">
+</head>
+<body>
+
+<div class="wrap">
+    <div class="cyber-hero">
+        <h1>Tower of Hanoi</h1>
+        <p class="subtitle">经典递归算法可视化</p>
+    </div>
+
+    <div class="hanoi-controls">
+        <label for="diskCount">盘子数量：</label>
+        <input type="number" id="diskCount" value="5" min="1" max="10">
+        <button onclick="startSolve()">开始求解</button>
+    </div>
+
+    <img src="./tower-of-hanoi.png" alt="Tower of Hanoi" style="display:block;margin:var(--space-md) auto;max-width:300px;">
+
+    <div class="hanoi-rules">
+        <h3>规则</h3>
+        <ul>
+            <li>每次只能移动一个盘子</li>
+            <li>大盘子不能放在小盘子上面</li>
+            <li>将所有盘子从 A 柱移动到 C 柱</li>
+        </ul>
+    </div>
+
+    <div id="print" class="hanoi-output"></div>
+</div>
+
+<script>
+    let Tower = [[], [], []];
+    let TempTower = [[], [], []];
+    var n = 5;
+
+    function move(m, a, b, c) {
+        if (m === 1) {
             headmove(a, c);
             draw(n);
             document.getElementById("print").innerHTML += "<li>--------------------------------------------------------------------------</li><br>";
-            move(m - 1, b, a, c);
+            return;
         }
-        
-        function headmove(x, y) {
-          
-            for (let i = 0; i < n; i++) {
-                if (Tower[x][i] != 0) {
-                    Tower[y][i] = Tower[x][i];
-                    Tower[x][i] = 0;
-                    return;
+        move(m - 1, a, c, b);
+        headmove(a, c);
+        draw(n);
+        document.getElementById("print").innerHTML += "<li>--------------------------------------------------------------------------</li><br>";
+        move(m - 1, b, a, c);
+    }
+
+    function headmove(a, c) {
+        if (Tower[a].length === 0) return;
+        let temp = Tower[a].pop();
+        Tower[c].push(temp);
+        document.getElementById("print").innerHTML += "<li>将 " + temp + " 从柱子 " + (a + 1) + " 移动到柱子 " + (c + 1) + "</li><br>";
+    }
+
+    function draw(n) {
+        let str = "<pre>";
+        let tempTower = [[], [], []];
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < Tower[i].length; j++) {
+                tempTower[i][j] = Tower[i][j];
+            }
+        }
+        for (let i = n - 1; i >= 0; i--) {
+            for (let j = 0; j < 3; j++) {
+                if (tempTower[j].length > i) {
+                    let num = tempTower[j][i];
+                    let spaces = n - num;
+                    str += "&nbsp;".repeat(spaces) + "1".repeat(num * 2 - 1) + "&nbsp;".repeat(spaces);
+                } else {
+                    str += "&nbsp;".repeat(n) + "|" + "&nbsp;".repeat(n - 1);
                 }
+                str += "&nbsp;&nbsp;";
             }
+            str += "<br>";
         }
-        
-        function TowerDown(){
-            for (let i = 0; i < n; i++) {
-                TempTower[0][i] = 0;
-                TempTower[1][i] = 0;
-                TempTower[2][i] = 0;
-            }
-            
-            for(let k=0;k<3;k++){
-                for (let i = 0,j = 0; i < n; i++,j++) {
-                    while(Tower[k][n-i-1]==0){
-                        i++;
-                    }
-                    if(i<n&&j<n)
-                        TempTower[k][n-j-1]=Tower[k][n-i-1];
-                }
-            }
+        str += "&nbsp;".repeat(n - 1) + "A" + "&nbsp;".repeat(n * 2) + "B" + "&nbsp;".repeat(n * 2) + "C<br></pre>";
+        document.getElementById("print").innerHTML += str;
+    }
 
-
+    function startSolve() {
+        n = parseInt(document.getElementById("diskCount").value) || 5;
+        if (n < 1) n = 1;
+        if (n > 10) n = 10;
+        Tower = [[], [], []];
+        for (let i = n; i >= 1; i--) {
+            Tower[0].push(i);
         }
+        document.getElementById("print").innerHTML = "";
+        draw(n);
+        move(n, 0, 1, 2);
+    }
 
-        function draw(m) {
-            TowerDown();
-            for (let i = 0; i < m; i++) {
-                let a = TempTower[0][i];
-                let b = TempTower[1][i];
-                let c = TempTower[2][i];
-                picture(m, a);
-                picture(m, b);
-                picture(m, c);
-                document.getElementById("print").innerHTML += "<br>";
-
-            }
+    window.onload = function () {
+        Tower = [[], [], []];
+        for (let i = n; i >= 1; i--) {
+            Tower[0].push(i);
         }
-        
-        function picture(m, number) {
-            for (let i = 0; i < m - number; i++) {
-                document.getElementById("print").innerHTML +="&nbsp;&nbsp;";
-            }
-            for (let i = 0; i < 2 * number-1; i++) {
-                document.getElementById("print").innerHTML +="1";
-            }
-            for (let i = 0; i < m - number; i++) {
-                document.getElementById("print").innerHTML +="&nbsp;&nbsp;";
-            }
-            if(number!=0){
-                document.getElementById("print").innerHTML +="&nbsp;&nbsp;";
-            }
-        }
-        
+        draw(n);
+    };
+</script>
 
-        function solveTowerOfHanoi() {
-            n = parseInt(document.getElementById('diskNumber').value);
-            document.getElementById("print").innerHTML ="";
-            for (let i = 0; i < n; i++) {
-                Tower[0][i] = i + 1;
-                Tower[1][i] = 0;
-                Tower[2][i] = 0;
-            }
-
-            draw(n);
-            document.getElementById("print").innerHTML += "<li>--------------------------------------------------------------------------</li><br>";
-            move(n, 0, 1, 2);
-        }
-    </script>
-
-</head>
-<body>
-    <h1>Tower of Hanoi Solver</h1>
-
-    <label for="diskNumber">Enter the number of disks(a number should <=6):</label>
-    <input type="text" id="diskNumber" placeholder="Enter a number">
-    <button onclick="solveTowerOfHanoi()">Solve</button>
-    <div>
-        <h2>Rule</h2>
-        <ol>
-            <li>Only one disk may be moved at a time.</li>
-            <li>Each move consists of taking the upper disk from one of the stacks and placing it on top of another stack or on an empty rod.</li>
-            <li>No disk may be placed on top of a disk that is smaller than it.</li>
-        </ol>
-        <img src="./tower-of-hanoi.png" width="312.5" height="259"/></picture>
-        <h3>the process picture</h3>
-
-    </div>
-    <div id="print">
-        
-    </div>
-    
+<script src="/assets/js/nav.js"></script>
 </body>
 </html>

@@ -1,64 +1,129 @@
+/* Sudoku — cyberpunk theme */
 #container {
-      display: block;
-    }
-    .sudoku_wrap {
-      width: inherit;
-      height: 600px;
-    }
-    .button_wrap {
-      width: 170px;
-      height: 100px;
-    }
-    .check_wrap {
-      width:170px;
-      height: 50px;
-    }
-    .center {
-      position: absolute;
-      margin:auto;
-      top:0;
-      left: 0;
-      right: 0;
-      bottom:0;
-    }
-    .center-horizontal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-md);
+}
 
-      margin-left:auto;
-      margin-right: auto;
-      left: 0;
-      right:0;
-    }
-    #sudoku {
-      width: 590px;
-      height: 540px;
-      list-style: none;
-      position: static;
-    }
+h1 {
+  text-align: center;
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+}
 
-    #sudoku li {
-      width: 60px;
-      height: 60px;
-      border: 1px solid #000;
-      float: left;
-      text-align: center;
-      line-height: 60px;
-      font-size: 30px;
-    }
+#sudoku {
+  width: 590px;
+  max-width: 100%;
+  height: auto;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(9, 1fr);
+  gap: 1px;
+  background: rgba(0, 240, 255, 0.15);
+  border: 2px solid var(--neon-cyan);
+  border-radius: 4px;
+  box-shadow: var(--glow-cyan);
+}
 
-    #sudoku input {
-      width: 60px;
-      height: 60px;
-      border: 0px;
-      float: left;
-      text-align: center;
-      line-height: 60px;
-      font-size: 30px;
-      padding: 0px;
-    }
+#sudoku li {
+  width: 100%;
+  aspect-ratio: 1;
+  min-height: 50px;
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 240, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  float: none;
+  line-height: 1;
+}
 
-    button {
-      width:80px;
-      height: 50px;
-      font-size: 20px;
-      border-radius: 5px;
-    }
+#sudoku li:hover {
+  background: rgba(0, 240, 255, 0.08);
+}
+
+#sudoku li.empty {
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+#sudoku li.fixed {
+  color: var(--text-muted);
+}
+
+#sudoku input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--neon-cyan);
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#sudoku input:focus {
+  outline: 2px solid var(--neon-magenta);
+  background: rgba(255, 0, 170, 0.05);
+}
+
+p {
+  text-align: center;
+  margin: var(--space-md) 0;
+}
+
+p label {
+  margin: 0 var(--space-xs);
+  color: var(--text-secondary);
+  cursor: pointer;
+}
+
+p input[type="radio"] {
+  accent-color: var(--neon-cyan);
+}
+
+button {
+  background: transparent;
+  border: 1px solid var(--neon-cyan);
+  color: var(--neon-cyan);
+  padding: 8px 20px;
+  font-size: 1rem;
+  font-family: var(--font-body);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  margin: var(--space-xs);
+  transition: all var(--transition-fast);
+}
+
+button:hover {
+  background: rgba(0, 240, 255, 0.1);
+  box-shadow: var(--glow-cyan);
+}
+
+#timer {
+  color: var(--neon-yellow);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 600px) {
+  #sudoku {
+    width: 100%;
+    max-width: 360px;
+  }
+  #sudoku li {
+    min-height: 36px;
+    font-size: 1rem;
+  }
+}

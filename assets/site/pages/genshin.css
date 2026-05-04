@@ -1,0 +1,49 @@
+/* Genshin gallery — character card grid */
+.genshin-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-lg);
+  padding: 0;
+}
+
+.genshin-card {
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  text-align: center;
+}
+
+.genshin-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glow-cyan);
+  border-color: rgba(0, 240, 255, 0.4);
+}
+
+.genshin-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 0;
+}
+
+.genshin-card .label {
+  padding: var(--space-sm) var(--space-md);
+  font-weight: 600;
+  color: var(--neon-cyan);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .genshin-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .genshin-gallery {
+    grid-template-columns: 1fr;
+  }
+}

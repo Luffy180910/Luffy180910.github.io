@@ -1,15 +1,28 @@
-* {padding: 0; margin: 0;}
-        a{text-decoration: none;}
-        /*
-        body{
-            background-image:url(/assets/genshin/水神.png);
-            background-position: right center ;
-            background-attachment: fixed;
-            background-size: contain;
-            background-repeat: no-repeat;
-            width: auto;
-            height: 1440px;}
-        */
-            .wrap {
-            background: rgba(149, 149, 149, 0.4); width: 1000px; height: 5000px;
-            text-align:start; padding: 80px 40px 10px; margin: 45px auto 0; overflow: hidden;}
+/* Algorithm index page */
+body {
+  background: var(--bg-primary);
+}
+
+.wrap {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: var(--space-lg);
+}
+
+.wrap ul {
+  padding-left: 1.5em;
+  line-height: 1.8;
+}
+
+.wrap li {
+  margin: var(--space-sm) 0;
+}
+
+.wrap img {
+  display: block;
+  margin: var(--space-md) auto;
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  border: var(--border-subtle);
+}

@@ -1,22 +1,154 @@
-* {padding: 0; margin: 0;}
-            body {
-				height: 100%; 
-				background: #FFF url("/assets/site/media/background.jpg") repeat; 
-				color: #fff; 
-				font-size: 16px;}
+/* Home page — cyberpunk hero + navigation cards */
+.home-page {
+  background: var(--bg-primary);
+}
 
-			
-			#chiikawa_background{
-				position: fixed;
-				bottom: 20px;
-				right: 20px;
-			}
-			a {color: #5daeff; outline:none; text-decoration:none;}
-			a:hover {text-decoration: underline;}
-			h1 {color: #39e83f; font-weight: 400;}
-			h2 {font-weight: 400; margin: 10px 0 40px;}
-			h3 {font-weight: normal; text-align: left; margin: 0 0 20px;}
-			.wrap {background: rgba(0, 0, 0, 0.4); width: 850px; height: 3450px; text-align: center; padding: 80px 40px 10px; margin: 45px auto 0; overflow: hidden;}
-			.logo {display: inline-block; margin: 0 0 40px;}
-			ul {text-align: left; line-height: 26px; padding: 0 0 0 15px;}
-			p {font-size: 30px; font-style: italic;  color: #5daeff; margin: 20px 0 0;}
+.home-page .wrap {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  max-width: var(--container-max);
+}
+
+/* Logo */
+.home-logo {
+  display: block;
+  margin: 0 auto var(--space-lg);
+  filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.3));
+  transition: filter var(--transition-base);
+}
+
+.home-logo:hover {
+  filter: drop-shadow(0 0 50px rgba(0, 240, 255, 0.6));
+}
+
+/* Contact line */
+.home-contact {
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+}
+
+.home-contact a {
+  color: var(--neon-cyan);
+  font-weight: 500;
+}
+
+/* Section grid */
+.home-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--space-md);
+  list-style: none;
+  padding: 0;
+}
+
+.home-grid li {
+  margin: 0;
+}
+
+.home-grid a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-xl) var(--space-md);
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 1.15rem;
+  font-weight: 600;
+  text-decoration: none;
+  text-align: center;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  min-height: 120px;
+}
+
+.home-grid a::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(0, 240, 255, 0.06) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.home-grid a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  background: var(--neon-cyan);
+  border-radius: 1px;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: all var(--transition-base);
+}
+
+.home-grid a:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--glow-cyan);
+  border-color: rgba(0, 240, 255, 0.5);
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+}
+
+.home-grid a:hover::before {
+  opacity: 1;
+}
+
+.home-grid a:hover::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+/* Section icon */
+.home-grid .icon {
+  font-size: 2rem;
+  margin-bottom: var(--space-sm);
+}
+
+/* Enjoy text */
+.home-enjoy {
+  text-align: center;
+  margin: var(--space-2xl) 0 var(--space-lg);
+  font-size: 1.6rem;
+  font-style: italic;
+  color: var(--neon-magenta);
+  text-shadow: var(--glow-magenta);
+}
+
+@media (max-width: 768px) {
+  .home-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .home-grid a {
+    padding: var(--space-md);
+    min-height: 90px;
+    font-size: 1rem;
+  }
+
+  .home-enjoy {
+    font-size: 1.3rem;
+  }
+
+  .cyber-hero h1 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs);
+  }
+}

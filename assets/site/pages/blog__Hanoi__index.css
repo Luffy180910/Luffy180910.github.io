@@ -1,0 +1,60 @@
+/* Tower of Hanoi page */
+.hanoi-controls {
+  text-align: center;
+  margin: var(--space-lg) 0;
+}
+
+.hanoi-controls label {
+  color: var(--text-secondary);
+  margin-right: var(--space-sm);
+}
+
+.hanoi-controls input {
+  background: var(--bg-card);
+  border: var(--border-cyan);
+  color: var(--neon-cyan);
+  padding: 6px 12px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  width: 70px;
+  text-align: center;
+}
+
+.hanoi-rules {
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  margin: var(--space-lg) 0;
+}
+
+.hanoi-rules ul {
+  margin-bottom: 0;
+}
+
+.hanoi-output {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  line-height: 1.2;
+  color: var(--neon-cyan);
+  background: rgba(0, 0, 0, 0.3);
+  border: var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: var(--space-md);
+  overflow-x: auto;
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.hanoi-output li {
+  list-style: none;
+  color: var(--text-secondary);
+}
+
+.hanoi-output pre {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--neon-green);
+}

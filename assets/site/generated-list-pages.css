@@ -1,22 +1,130 @@
-.list-page {
-  min-height: 100vh;
-  padding: 40px 16px;
+/* ============================================================
+   List Pages — Card Grid Layout (blog index, video index)
+   Used alongside base.css
+   ============================================================ */
+
+/* ----- Blog List Page ----- */
+.blog-page .wrap {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: var(--space-lg) 0;
 }
-.list-page .wrap {
-  max-width: 1080px;
-  margin: 0 auto;
-  background: rgba(255, 255, 255, 0.85);
-  border-radius: 10px;
-  padding: 24px;
+
+.blog-page h1 {
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+  margin-bottom: var(--space-xl);
+  border-left: none;
+  padding-left: 0;
 }
-.list-page h1 { margin: 0 0 16px; }
-.blog-page { background: #f4f6fb; }
-.blog-page ul { margin: 0; padding-left: 20px; }
-.blog-page li { margin: 8px 0; }
-.blog-page a { color: #1651d1; text-decoration: none; }
-.blog-page a:hover { text-decoration: underline; }
-.video-page { background: #0f172a; color: #e5e7eb; }
-.video-page .wrap { background: rgba(2, 6, 23, 0.7); }
-.video-card { margin-bottom: 24px; }
-.video-card h2 { margin: 0 0 8px; font-size: 22px; }
-.video-card video { width: 100%; border-radius: 8px; background: #000; }
+
+.blog-page .wrap ul {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--space-md);
+  padding: 0;
+  list-style: none;
+}
+
+.blog-page .wrap li {
+  margin: 0;
+}
+
+.blog-page .wrap li a {
+  display: block;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 1.05rem;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.blog-page .wrap li a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--neon-cyan);
+  border-radius: 0 2px 2px 0;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.blog-page .wrap li a:hover {
+  transform: translateX(6px);
+  box-shadow: var(--glow-cyan);
+  border-color: rgba(0, 240, 255, 0.4);
+  text-decoration: none;
+  color: var(--neon-cyan);
+}
+
+.blog-page .wrap li a:hover::before {
+  opacity: 1;
+}
+
+/* ----- Video List Page ----- */
+.video-page .wrap {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: var(--space-lg) 0;
+}
+
+.video-page h1 {
+  color: var(--neon-cyan);
+  text-shadow: var(--glow-cyan);
+  margin-bottom: var(--space-xl);
+  border-left: none;
+  padding-left: 0;
+}
+
+.video-card {
+  background: var(--bg-card);
+  border: var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+  transition: all var(--transition-base);
+}
+
+.video-card:hover {
+  box-shadow: var(--glow-cyan);
+  border-color: rgba(0, 240, 255, 0.3);
+}
+
+.video-card h2 {
+  color: var(--neon-cyan);
+  margin: 0 0 var(--space-md);
+  border-left: 2px solid var(--neon-magenta);
+  padding-left: var(--space-md);
+  font-size: 1.2rem;
+}
+
+.video-card video {
+  width: 100%;
+  border-radius: var(--radius-sm);
+  background: #000;
+}
+
+/* ----- Responsive ----- */
+@media (max-width: 768px) {
+  .blog-page .wrap ul {
+    grid-template-columns: 1fr;
+  }
+
+  .video-card {
+    padding: var(--space-md);
+  }
+
+  .video-card h2 {
+    font-size: 1rem;
+  }
+}

@@ -51,3 +51,17 @@ python3 scripts/generate_content_index.py
 ░▒▓█▓▒░        ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░        ░▒▓█▓▒░           ░▒▓█▓▒░     
 ░▒▓████████▓▒░  ░▒▓██████▓▒░  ░▒▓█▓▒░        ░▒▓█▓▒░           ░▒▓█▓▒░     
 </pre>
+
+##
+ Bash(python3 -m http.server 8080)
+  ⎿  Running in the background (↓ to manage)
+
+● 本地服务器已启动。你可以在浏览器中访问：
+
+  - 主页: http://localhost:8080/pages/home/index.html
+  - 博客: http://localhost:8080/pages/blog/index.html
+  - 视频: http://localhost:8080/pages/video/index.html
+  - 原神: http://localhost:8080/pages/genshin/index.html
+  - 德州: http://localhost:8080/pages/texas/index.html
+
+  或者从根路径自动跳转：http://localhost:8080
